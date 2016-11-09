@@ -6,9 +6,10 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= load_yojs(app_name: 'massage-scheduler') %>
   </head>
 
-  <body>
+  <body class="<%= classes_for_scoped_css %>" data-env="<%= Rails.env %>">
     <%= yield %>
   </body>
 </html>
