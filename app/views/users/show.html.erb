@@ -17,5 +17,10 @@
   <%= @user.role %>
 </p>
 
+<p>
+  <strong>Ativo?</strong>
+  <%= @user.active %>
+</p>
+
 <%= link_to 'Editar', edit_user_path(@user) %> |
 <%= link_to 'Voltar', users_path %>
