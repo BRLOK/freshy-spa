@@ -5,4 +5,8 @@ module ApplicationHelper
     classes << "#{params[:action].parameterize('-')}-action"
     classes.join(" ").gsub("_", "-")
   end
+
+  def active_class(params, match_string)
+    params[:controller].match(match_string).present? ? "active" : ""
+  end
 end

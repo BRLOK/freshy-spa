@@ -2,6 +2,10 @@
   <p id="notice"><%= notice %></p>
 <% end %>
 
+<div class="page-header">
+  <h1>Visualizando usuário</h1>
+</div>
+
 <p>
   <strong>Nome:</strong>
   <%= @user.name %>
@@ -22,5 +26,9 @@
   <%= @user.active %>
 </p>
 
-<%= link_to 'Editar', edit_user_path(@user) %> |
-<%= link_to 'Voltar', users_path %>
+<%= link_to users_path, class: "btn btn-default" do %>
+  <span class="glyphicon glyphicon-menu-left"></span> Voltar
+<% end %>
+<%= link_to edit_user_path(@user), class: "btn btn-warning" do %>
+  <span class="glyphicon glyphicon-pencil"></span> Editar
+<% end %>
