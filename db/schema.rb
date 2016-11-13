@@ -12,21 +12,14 @@
 
 ActiveRecord::Schema.define(version: 20161109012831) do
 
-  create_table "posts", force: :cascade do |t|
-    t.string   "title"
-    t.text     "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
   create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "password_digest"
     t.string   "email"
     t.string   "role"
-    t.boolean  "active"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.boolean  "active",          default: true
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
   end
 
 end
