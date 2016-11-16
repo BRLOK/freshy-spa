@@ -25,7 +25,7 @@
                 </a>
               </div>
               <ul class="nav navbar-nav">
-                <li class="<%= active_class(params, 'home') %>">
+                <li class="<%= active_class(params, 'dashboard') %>">
                   <a href="<%= root_url %>">Freshy Spa</a>
                 </li>
                 <li class="<%= active_class(params, 'users') %>">
@@ -37,6 +37,11 @@
               </ul>
             </div>
           </nav>
+          <% if flash.present? %>
+            <% flash.each do |status, message| %>
+              <%= content_tag :div, message, class: "alert #{class_for_alert(status)}" %>
+            <% end %>
+          <% end %>
           <%= yield %>
         </div>
       </div>

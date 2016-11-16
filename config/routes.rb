@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  root to: "users#index"
+  root to: "dashboard#index"
   resources :users, except: :destroy, path: "usuarios"
+
+  resources :dashboard, only: :index, path: "painel"
 
   controller :sessions do
     get "login" => :new
