@@ -1,9 +1,5 @@
 class User < ApplicationRecord
-  after_save(on: :update) do
-    if User.active.count.zero?
-      raise "Não é possível desativar o último usuário"
-    end
-  end
+  after_save :ensure_one_active, on: :update
 
   VALID_ROLES = ["admin", "operator", "collaborator"]
   validates :name, presence: true
@@ -12,4 +8,10 @@ class User < ApplicationRecord
   has_secure_password
 
   scope :active, -> { where(active: true) }
+
+  private
+
+  def ensure_one_active
+    raise "Não é possível desativar o último usuário" if User.active.count.zero?
+  end
 end
