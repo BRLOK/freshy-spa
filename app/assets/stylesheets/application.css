@@ -23,3 +23,11 @@ body {
   max-width: 20px;
   max-height: 20px;
 }
+
+.margin-left {
+  margin-left: 5px;
+}
+
+.margin-right {
+  margin-right: 5px;
+}
