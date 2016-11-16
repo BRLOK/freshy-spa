@@ -37,7 +37,11 @@
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.name %> <span class="caret"></span></a>
                   <ul class="dropdown-menu">
                     <li role="separator" class="divider"></li>
-                    <li class="text-right"><%= button_to "Logout", logout_path, method: :delete, class: "btn btn-danger btn-xs margin-right" %></li>
+                    <li class="text-right">
+                      <%= button_to logout_path, method: :delete, class: "btn btn-danger btn-sm margin-right" do %>
+                        <span class="glyphicon glyphicon-log-out"></span> Sair
+                      <% end %>
+                    </li>
                   </ul>
                 </li>
               </ul>

@@ -30,10 +30,8 @@ class UsersController < ApplicationController
       if @user.save
         format.html { redirect_to users_url,
           notice: "Usuário #{@user.name} foi criado com sucesso." }
-        format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -45,12 +43,13 @@ class UsersController < ApplicationController
       if @user.update(user_params)
         format.html { redirect_to users_url,
           notice: "Usuário #{@user.name} foi salvo com sucesso." }
-        format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
+  rescue StandardError => e
+    flash[:error] = e.message
+    render :edit
   end
 
   private
