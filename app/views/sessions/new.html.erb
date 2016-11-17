@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MassageScheduler</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= load_yojs(app_name: 'massage_scheduler') %>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  </head>
+
+  <body class="<%= classes_for_scoped_css %>">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="login-form">
+            <% if flash.present? %>
+              <% flash.each do |status, message| %>
+                <%= content_tag :div, message, class: "alert #{class_for_alert(status)}" %>
+              <% end %>
+            <% end %>
+            <%= form_tag({ action: 'create' }, {class: 'form-horizontal'}) do %>
+              <fieldset>
+                <legend>Acesso ao sistema - Freshy Spa</legend>
+                <div class="form-group">
+                  <%= label_tag :email, "E-mail", class: "col-sm-2 control-label" %>
+                  <div class="col-sm-10">
+                    <%= text_field_tag :email, params[:email], class: "form-control" %>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <%= label_tag :password, "Senha", class: "col-sm-2 control-label" %>
+                  <div class="col-sm-10">
+                    <%= password_field_tag :password, params[:password], class: "form-control" %>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-sm-offset-2 col-sm-10">
+                    <%= button_tag type: "submit", class: "btn btn-sm btn-success" do %>
+                      <span class="glyphicon glyphicon-log-in"></span> Entrar
+                    <% end %>
+                  </div>
+                </div>
+              </fieldset>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

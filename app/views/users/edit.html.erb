@@ -1,0 +1,12 @@
+<div class="page-header">
+  <h1>Editando usuário</h1>
+</div>
+
+<%= render 'form', user: @user %>
+
+<%= link_to users_path, class: "btn btn-sm btn-default" do %>
+   <span class="glyphicon glyphicon-menu-left"></span> Voltar
+<% end %>
+<%= link_to @user, class: "btn btn-sm btn-primary" do %>
+    <span class="glyphicon glyphicon-eye-open"></span> Ver
+<% end %>
