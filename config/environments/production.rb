@@ -83,4 +83,10 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  config.i18n.enforce_available_locales = false
+  config.i18n.available_locales = "pt-BR"
+  config.time_zone = 'Brasilia'
+  config.encoding = "utf-8"
+  config.filter_parameters += [:password, :file, :credit_card]
 end

@@ -18,8 +18,8 @@
       <tr>
         <td><%= user.name %></td>
         <td><%= user.email %></td>
-        <td><%= user.role %></td>
-        <td><%= user.active %></td>
+        <td><%= I18n.t("enums.user.role.#{user.role}") %></td>
+        <td><%= I18n.t user.active.to_s %></td>
         <td>
           <%= link_to user, class: "btn btn-sm btn-primary" do %>
               <span class="glyphicon glyphicon-eye-open"></span> Ver

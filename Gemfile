@@ -27,6 +27,7 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 gem 'codus'
+gem 'rails-i18n', '~> 5.0.0' # For 5.0.x
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

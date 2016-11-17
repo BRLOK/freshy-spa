@@ -14,12 +14,12 @@
 
 <p>
   <strong>Perfil:</strong>
-  <%= @user.role %>
+  <%= I18n.t("enums.user.role.#{@user.role}") %>
 </p>
 
 <p>
   <strong>Ativo?</strong>
-  <%= @user.active %>
+  <%= I18n.t @user.active.to_s %>
 </p>
 
 <%= link_to users_path, class: "btn btn-sm btn-default" do %>

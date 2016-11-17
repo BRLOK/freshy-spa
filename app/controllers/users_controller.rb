@@ -48,7 +48,6 @@ class UsersController < ApplicationController
       end
     end
   rescue StandardError => e
-    flash[:error] = e.message
     render :edit
   end
 
