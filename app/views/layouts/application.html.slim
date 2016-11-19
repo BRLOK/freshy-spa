@@ -1,0 +1,43 @@
+doctype html
+html
+  head
+    title Freshy Spa
+    = csrf_meta_tags
+
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = load_yojs(app_name: 'massage_scheduler')
+    /! Latest compiled and minified CSS
+    link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"
+    /! Latest compiled and minified JavaScript
+    script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"
+
+  body class=classes_for_scoped_css
+    .container
+      .row
+        .col-xs-12
+          nav.navbar.navbar-default.navbar-fixed-top
+            .container
+              .navbar-header
+                = link_to root_url, class: "navbar-brand" do
+                  = image_tag("logo.png", alt: "logo")
+              ul.nav.navbar-nav
+                li class=active_class(params, 'dashboard')
+                  = link_to "Freshy Spa", root_url
+                li class=active_class(params, 'users')
+                  = link_to "Usuários", users_path
+              ul.nav.navbar-nav.navbar-right
+                li.dropdown
+                  = link_to '#', class: "dropdown-toggle", role: "button", data: { toggle: "dropdown" } do
+                    = current_user.name
+                    span.caret
+                  ul.dropdown-menu
+                    li.divider role="separator"
+                    li.text-right
+                      = button_to logout_path, method: :delete, class: "btn btn-danger btn-sm margin-right" do
+                        span.glyphicon.glyphicon-log-out
+                        |  Sair
+          - if flash.present?
+            - flash.each do |status, message|
+              = content_tag :div, message, class: "alert #{class_for_alert(status)}"
+          = yield

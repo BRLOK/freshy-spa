@@ -1,0 +1,31 @@
+.page-header
+  h1 Listando usuários
+.pull-right
+  = link_to new_user_path, class: "btn btn-sm btn-success" do
+    span class="glyphicon glyphicon-plus"
+    |  Novo usuário
+
+table.table.table-hover
+  thead
+    tr
+      th Nome
+      th E-mail
+      th Perfil
+      th Ativo?
+      th
+
+  tbody
+    - @users.each do |user|
+      tr
+        td = user.name
+        td = user.email
+        td = I18n.t("enums.user.role.#{user.role}")
+        td = I18n.t user.active.to_s
+        td
+          .btn-group
+            = link_to user, class: "btn btn-sm btn-primary" do
+              span class="glyphicon glyphicon-eye-open"
+              |  Ver
+            = link_to edit_user_path(user), class: "btn btn-sm btn-warning" do
+              span class="glyphicon glyphicon-pencil"
+              |  Editar
