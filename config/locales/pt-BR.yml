@@ -3,8 +3,14 @@ pt-BR:
   "false": Não
   activerecord:
     models:
+      service: Serviço
       user: Usuário
     attributes:
+      service:
+        name: Nome
+        description: Descrição
+        duration: Duração
+        active: Ativo?
       user:
         name: Nome
         email: E-mail

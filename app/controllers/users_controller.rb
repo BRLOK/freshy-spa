@@ -2,13 +2,11 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update]
 
   # GET /users
-  # GET /users.json
   def index
     @users = User.order(:name)
   end
 
   # GET /users/1
-  # GET /users/1.json
   def show
   end
 
@@ -22,14 +20,13 @@ class UsersController < ApplicationController
   end
 
   # POST /users
-  # POST /users.json
   def create
     @user = User.new(user_params)
 
     respond_to do |format|
       if @user.save
         format.html { redirect_to users_url,
-          notice: "Usuário #{@user.name} foi criado com sucesso." }
+          notice: "Usuário #{@user.name} criado com sucesso." }
       else
         format.html { render :new }
       end
@@ -37,12 +34,11 @@ class UsersController < ApplicationController
   end
 
   # PATCH/PUT /users/1
-  # PATCH/PUT /users/1.json
   def update
     respond_to do |format|
       if @user.update(user_params)
         format.html { redirect_to users_url,
-          notice: "Usuário #{@user.name} foi salvo com sucesso." }
+          notice: "Usuário #{@user.name} salvo com sucesso." }
       else
         format.html { render :edit }
       end
