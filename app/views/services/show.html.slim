@@ -1,5 +1,5 @@
 .page-header
-  h1 Visualizando serviço
+  h1 Visualizando tratamento
 
 form.form-horizontal
   .form-group
@@ -10,7 +10,7 @@ form.form-horizontal
   .form-group
     label.col-sm-2.control-label Descrição
     .col-sm-10
-      p.form-control-static
+      p.form-control-static.text-justify
         = @service.description
   .form-group
     label.col-sm-2.control-label Duração (minutos)
@@ -28,7 +28,7 @@ form.form-horizontal
       .btn-group
         = link_to services_path, class: "btn btn-sm btn-default" do
           span.glyphicon.glyphicon-menu-left
-          |  Voltar
+          | Voltar
         = link_to edit_service_path(@service), class: "btn btn-sm btn-warning" do
           span.glyphicon.glyphicon-pencil
-          |  Editar
+          | Editar

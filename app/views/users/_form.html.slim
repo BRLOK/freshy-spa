@@ -35,22 +35,28 @@
       = f.select :role, User::VALID_ROLES.map{ |role| [I18n.t("enums.user.role.#{role}"), role] }, {}, class: "form-control"
 
   .form-group
+    = f.label :services, class: "col-sm-2 control-label"
+    .col-sm-10
+      = f.collection_check_boxes(:service_ids, Service.active, :id, :name) do |b|
+        = b.label(class: "checkbox-inline"){ b.check_box + b.text }
+
+  .form-group
     .col-sm-offset-2.col-sm-10
       .checkbox
         = f.label :active do
           = f.check_box :active
-          |  Ativo?
+          | Ativo?
 
   .form-group
     .col-sm-12.text-right
       .btn-group
         = link_to users_path, class: "btn btn-sm btn-default" do
           span.glyphicon.glyphicon-menu-left
-          |  Voltar
+          | Voltar
         = button_tag type: "submit", class: "btn btn-sm btn-success" do
           span.glyphicon.glyphicon-floppy-disk
-          |  Salvar
+          | Salvar
         - if ["edit", "update"].include? params[:action]
           = link_to @user, class: "btn btn-sm btn-primary" do
             span.glyphicon.glyphicon-eye-open
-            |  Ver
+            | Ver

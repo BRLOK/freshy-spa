@@ -1,5 +1,5 @@
 class ServicesController < ApplicationController
-  before_action :set_service, only: [:show, :edit, :update]
+  before_action :set_service, only: [:edit, :update]
 
   # GET /services
   def index
@@ -8,6 +8,7 @@ class ServicesController < ApplicationController
 
   # GET /services/1
   def show
+    @service = Service.find(params[:id]).decorate
   end
 
   # GET /services/new
@@ -50,7 +51,7 @@ class ServicesController < ApplicationController
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_service
-    @service = Service.find(params[:id]).decorate
+    @service = Service.find(params[:id])
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

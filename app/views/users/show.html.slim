@@ -18,6 +18,11 @@ form.form-horizontal
       p.form-control-static
         = @user.role
   .form-group
+    label.col-sm-2.control-label Habilitações
+    .col-sm-10
+      p.form-control-static
+        = @user.services
+  .form-group
     label.col-sm-2.control-label Ativo?
     .col-sm-10
       p.form-control-static
@@ -28,7 +33,7 @@ form.form-horizontal
       .btn-group
         = link_to users_path, class: "btn btn-sm btn-default" do
           span.glyphicon.glyphicon-menu-left
-          |  Voltar
+          | Voltar
         = link_to edit_user_path(@user), class: "btn btn-sm btn-warning" do
           span.glyphicon.glyphicon-pencil
-          |  Editar
+          | Editar

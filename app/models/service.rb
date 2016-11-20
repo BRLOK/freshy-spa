@@ -1,4 +1,7 @@
 class Service < ApplicationRecord
+  # translated as Tratamento
+  has_and_belongs_to_many :users
+
   VALID_DURATIONS = [15, 30, 60, 90, 120]
 
   validates :name, presence: true

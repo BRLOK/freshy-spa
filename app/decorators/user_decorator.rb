@@ -8,4 +8,8 @@ class UserDecorator < Draper::Decorator
   def active
     I18n.t object.active.to_s
   end
+
+  def services
+    object.services.pluck(:name).join(", ")
+  end
 end

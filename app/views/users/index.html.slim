@@ -2,8 +2,8 @@
   h1 Listando usuários
 .pull-right
   = link_to new_user_path, class: "btn btn-sm btn-success" do
-    span class="glyphicon glyphicon-plus"
-    |  Novo usuário
+    span.glyphicon.glyphicon-plus
+    | Novo usuário
 
 table.table.table-hover
   thead
@@ -11,6 +11,7 @@ table.table.table-hover
       th Nome
       th E-mail
       th Perfil
+      th Habilitações
       th Ativo?
       th
 
@@ -20,12 +21,13 @@ table.table.table-hover
         td = user.name
         td = user.email
         td = user.role
+        td = user.services
         td = user.active
         td
           .btn-group
             = link_to user, class: "btn btn-sm btn-primary" do
-              span class="glyphicon glyphicon-eye-open"
-              |  Ver
+              span.glyphicon.glyphicon-eye-open
+              | Ver
             = link_to edit_user_path(user), class: "btn btn-sm btn-warning" do
-              span class="glyphicon glyphicon-pencil"
-              |  Editar
+              span.glyphicon.glyphicon-pencil
+              | Editar
