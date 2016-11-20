@@ -26,7 +26,7 @@ class ServicesController < ApplicationController
     respond_to do |format|
       if @service.save
         format.html { redirect_to services_url,
-          notice: "Serviço #{@service.name} criado com sucesso." }
+          notice: "#{@service.name} criado com sucesso." }
       else
         format.html { render :new }
       end
@@ -38,7 +38,7 @@ class ServicesController < ApplicationController
     respond_to do |format|
       if @service.update(service_params)
         format.html { redirect_to services_url,
-          notice: "Serviço #{@service.name} salvo com sucesso." }
+          notice: "#{@service.name} salvo com sucesso." }
       else
         format.html { render :edit }
       end

@@ -9,7 +9,7 @@ pt-BR:
       service:
         name: Nome
         description: Descrição
-        duration: Duração
+        duration: Duração (minutos)
         active: Ativo?
       user:
         name: Nome

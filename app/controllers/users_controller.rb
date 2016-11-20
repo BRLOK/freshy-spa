@@ -26,7 +26,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         format.html { redirect_to users_url,
-          notice: "Usuário #{@user.name} criado com sucesso." }
+          notice: "#{@user.name} criado com sucesso." }
       else
         format.html { render :new }
       end
@@ -38,7 +38,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.update(user_params)
         format.html { redirect_to users_url,
-          notice: "Usuário #{@user.name} salvo com sucesso." }
+          notice: "#{@user.name} salvo com sucesso." }
       else
         format.html { render :edit }
       end

@@ -26,6 +26,8 @@ html
                   = link_to "Freshy Spa", root_url
                 li class=active_class(params, 'users')
                   = link_to "Usuários", users_path
+                li class=active_class(params, 'services')
+                  = link_to "Serviços", services_path
               ul.nav.navbar-nav.navbar-right
                 li.dropdown
                   = link_to '#', class: "dropdown-toggle", role: "button", data: { toggle: "dropdown" } do
