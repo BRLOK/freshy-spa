@@ -19,8 +19,8 @@ table.table.table-hover
       tr
         td = user.name
         td = user.email
-        td = I18n.t("enums.user.role.#{user.role}")
-        td = I18n.t user.active.to_s
+        td = user.role
+        td = user.active
         td
           .btn-group
             = link_to user, class: "btn btn-sm btn-primary" do

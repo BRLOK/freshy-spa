@@ -3,7 +3,7 @@ class ServicesController < ApplicationController
 
   # GET /services
   def index
-    @services = Service.order(:name)
+    @services = Service.order(:name).decorate
   end
 
   # GET /services/1
@@ -50,7 +50,7 @@ class ServicesController < ApplicationController
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_service
-    @service = Service.find(params[:id])
+    @service = Service.find(params[:id]).decorate
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

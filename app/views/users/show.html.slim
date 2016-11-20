@@ -16,12 +16,12 @@ form.form-horizontal
     label.col-sm-2.control-label Perfil
     .col-sm-10
       p.form-control-static
-        = I18n.t "enums.user.role.#{@user.role}"
+        = @user.role
   .form-group
     label.col-sm-2.control-label Ativo?
     .col-sm-10
       p.form-control-static
-        = I18n.t @user.active.to_s
+        = @user.active
 
   .form-group
     .col-sm-12.text-right

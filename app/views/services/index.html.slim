@@ -20,7 +20,7 @@ table.table.table-hover
         td = service.name
         td = service.description
         td = service.duration
-        td = I18n.t service.active.to_s
+        td = service.active
         td
           .btn-group
             = link_to service, class: "btn btn-sm btn-primary" do
