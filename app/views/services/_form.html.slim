@@ -2,7 +2,7 @@
   - if service.errors.any?
     #error_explanation.panel.panel-danger
       .panel-heading
-        = "#{service.errors.count} #{'erro'.pluralize(service.errors.count)} #{'proibiu'.pluralize(service.errors.count)} este serviço de salvar:"
+        = "#{service.errors.count} #{'erro'.pluralize(service.errors.count)} #{'proibiu'.pluralize(service.errors.count)} este tratamento de salvar:"
       .panel-body
         ul
         - service.errors.full_messages.each do |message|

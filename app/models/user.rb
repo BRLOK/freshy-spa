@@ -15,8 +15,8 @@ class User < ApplicationRecord
   private
 
   def ensure_one_active
-    if self.class.active.count.zero?
-      self.errors.add(:base, "Não é possível desativar todos")
+    if User.active.count.zero?
+      self.errors.add(:base, "Não é possível desativar todos os usuários")
       raise MustHaveOneActive
     end
   end
