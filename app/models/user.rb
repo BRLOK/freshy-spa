@@ -12,6 +12,12 @@ class User < ApplicationRecord
 
   scope :active, -> { where(active: true) }
 
+  VALID_ROLES.each do |some_role|
+    define_method "#{some_role}?" do
+      some_role == self.role
+    end
+  end
+
   private
 
   def ensure_one_active

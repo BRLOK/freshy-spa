@@ -34,6 +34,7 @@ form.form-horizontal
         = link_to users_path, class: "btn btn-sm btn-default" do
           span.glyphicon.glyphicon-menu-left
           | Voltar
-        = link_to edit_user_path(@user), class: "btn btn-sm btn-warning" do
-          span.glyphicon.glyphicon-pencil
-          | Editar
+        - if policy(@user).update?
+          = link_to edit_user_path(@user), class: "btn btn-sm btn-warning" do
+            span.glyphicon.glyphicon-pencil
+            | Editar

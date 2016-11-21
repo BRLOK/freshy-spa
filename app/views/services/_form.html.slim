@@ -40,7 +40,7 @@
         = button_tag type: "submit", class: "btn btn-sm btn-success" do
           span.glyphicon.glyphicon-floppy-disk
           | Salvar
-        - if ["edit", "update"].include? params[:action]
-          = link_to @service, class: "btn btn-sm btn-primary" do
+        - if ["edit", "update"].include? params[:action] && policy(service).show?
+          = link_to service, class: "btn btn-sm btn-primary" do
             span.glyphicon.glyphicon-eye-open
             | Ver

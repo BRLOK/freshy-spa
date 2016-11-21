@@ -1,9 +1,10 @@
 .page-header
   h1 Listando usuários
 .pull-right
-  = link_to new_user_path, class: "btn btn-sm btn-success" do
-    span.glyphicon.glyphicon-plus
-    | Novo usuário
+  - if policy(User).create?
+    = link_to new_user_path, class: "btn btn-sm btn-success" do
+      span.glyphicon.glyphicon-plus
+      | Novo usuário
 
 table.table.table-hover
   thead
@@ -25,9 +26,11 @@ table.table.table-hover
         td = user.active
         td
           .btn-group
-            = link_to user, class: "btn btn-sm btn-primary" do
-              span.glyphicon.glyphicon-eye-open
-              | Ver
-            = link_to edit_user_path(user), class: "btn btn-sm btn-warning" do
-              span.glyphicon.glyphicon-pencil
-              | Editar
+            - if policy(user).show?
+              = link_to user, class: "btn btn-sm btn-primary" do
+                span.glyphicon.glyphicon-eye-open
+                | Ver
+            - if policy(user).update?
+              = link_to edit_user_path(user), class: "btn btn-sm btn-warning" do
+                span.glyphicon.glyphicon-pencil
+                | Editar

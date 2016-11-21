@@ -3,17 +3,19 @@ class ServicesController < ApplicationController
 
   # GET /services
   def index
-    @services = Service.order(:name).decorate
+    @services = policy_scope(Service.order(:name)).decorate
   end
 
   # GET /services/1
   def show
     @service = Service.find(params[:id]).decorate
+    authorize @service
   end
 
   # GET /services/new
   def new
     @service = Service.new
+    authorize @service
   end
 
   # GET /services/1/edit
@@ -23,7 +25,7 @@ class ServicesController < ApplicationController
   # POST /services
   def create
     @service = Service.new(service_params)
-
+    authorize @service
     respond_to do |format|
       if @service.save
         format.html { redirect_to services_url,
@@ -52,6 +54,7 @@ class ServicesController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_service
     @service = Service.find(params[:id])
+    authorize @service
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

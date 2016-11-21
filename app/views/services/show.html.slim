@@ -29,6 +29,7 @@ form.form-horizontal
         = link_to services_path, class: "btn btn-sm btn-default" do
           span.glyphicon.glyphicon-menu-left
           | Voltar
-        = link_to edit_service_path(@service), class: "btn btn-sm btn-warning" do
-          span.glyphicon.glyphicon-pencil
-          | Editar
+        - if policy(@service).update?
+          = link_to edit_service_path(@service), class: "btn btn-sm btn-warning" do
+            span.glyphicon.glyphicon-pencil
+            | Editar

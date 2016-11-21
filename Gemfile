@@ -31,6 +31,7 @@ gem 'rails-i18n', '~> 5.0.0' # For 5.0.x
 gem 'slim'
 gem 'activemodel-serializers-xml'
 gem 'draper'
+gem "pundit"
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

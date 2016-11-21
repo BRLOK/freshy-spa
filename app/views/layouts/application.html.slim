@@ -24,10 +24,12 @@ html
               ul.nav.navbar-nav
                 li class=active_class(params, 'dashboard')
                   = link_to "Freshy Spa", root_url
-                li class=active_class(params, 'users')
-                  = link_to "Usuários", users_path
-                li class=active_class(params, 'services')
-                  = link_to "Tratamentos", services_path
+                - if policy(User).index?
+                  li class=active_class(params, 'users')
+                    = link_to "Usuários", users_path
+                - if policy(Service).index?
+                  li class=active_class(params, 'services')
+                    = link_to "Tratamentos", services_path
               ul.nav.navbar-nav.navbar-right
                 li.dropdown
                   = link_to '#', class: "dropdown-toggle", role: "button", data: { toggle: "dropdown" } do

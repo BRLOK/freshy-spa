@@ -3,17 +3,19 @@ class UsersController < ApplicationController
 
   # GET /users
   def index
-    @users = User.order(:name).decorate
+    @users = policy_scope(User.order(:name)).decorate
   end
 
   # GET /users/1
   def show
     @user = User.find(params[:id]).decorate
+    authorize @user
   end
 
   # GET /users/new
   def new
     @user = User.new
+    authorize @user
   end
 
   # GET /users/1/edit
@@ -23,7 +25,7 @@ class UsersController < ApplicationController
   # POST /users
   def create
     @user = User.new(user_params)
-
+    authorize @user
     respond_to do |format|
       if @user.save
         format.html { redirect_to users_url,
@@ -52,6 +54,7 @@ class UsersController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_user
     @user = User.find(params[:id])
+    authorize @user
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
