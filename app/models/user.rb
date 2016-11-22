@@ -5,10 +5,12 @@ class User < ApplicationRecord
   has_and_belongs_to_many :services
 
   VALID_ROLES = ["admin", "operator", "collaborator"]
+
   validates :name, presence: true
   validates :email, presence: true, uniqueness: true, format: { with: /.+@.+\..+/i }
   has_secure_password
   validates :role, presence: true, inclusion: { in: VALID_ROLES }
+  has_secure_token :auth_token
 
   scope :active, -> { where(active: true) }
 
