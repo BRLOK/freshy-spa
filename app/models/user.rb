@@ -2,6 +2,8 @@ class User < ApplicationRecord
   class MustHaveOneActive < StandardError; end;
   after_save :ensure_one_active, on: :update
 
+  has_and_belongs_to_many :services
+
   VALID_ROLES = ["admin", "operator", "collaborator"]
   validates :name, presence: true
   validates :email, presence: true, uniqueness: true, format: { with: /.+@.+\..+/i }
@@ -10,11 +12,17 @@ class User < ApplicationRecord
 
   scope :active, -> { where(active: true) }
 
+  VALID_ROLES.each do |some_role|
+    define_method "#{some_role}?" do
+      some_role == self.role
+    end
+  end
+
   private
 
   def ensure_one_active
     if User.active.count.zero?
-      self.errors.add(:base, "Não é possível desativar o último usuário")
+      self.errors.add(:base, "Não é possível desativar todos os usuários")
       raise MustHaveOneActive
     end
   end

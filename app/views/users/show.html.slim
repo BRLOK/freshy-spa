@@ -1,0 +1,40 @@
+.page-header
+  h1 Visualizando usuário
+
+form.form-horizontal
+  .form-group
+    label.col-sm-2.control-label Nome
+    .col-sm-10
+      p.form-control-static
+        = @user.name
+  .form-group
+    label.col-sm-2.control-label E-mail
+    .col-sm-10
+      p.form-control-static
+        = @user.email
+  .form-group
+    label.col-sm-2.control-label Perfil
+    .col-sm-10
+      p.form-control-static
+        = @user.role
+  .form-group
+    label.col-sm-2.control-label Habilitações
+    .col-sm-10
+      p.form-control-static
+        = @user.services
+  .form-group
+    label.col-sm-2.control-label Ativo?
+    .col-sm-10
+      p.form-control-static
+        = @user.active
+
+  .form-group
+    .col-sm-12.text-right
+      .btn-group
+        = link_to users_path, class: "btn btn-sm btn-default" do
+          span.glyphicon.glyphicon-menu-left
+          | Voltar
+        - if policy(@user).update?
+          = link_to edit_user_path(@user), class: "btn btn-sm btn-warning" do
+            span.glyphicon.glyphicon-pencil
+            | Editar

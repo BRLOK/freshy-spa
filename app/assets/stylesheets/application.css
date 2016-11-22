@@ -31,3 +31,7 @@ body {
 .margin-right {
   margin-right: 5px;
 }
+
+.btn .glyphicon {
+  margin-right: 5px;
+}

@@ -1,0 +1,46 @@
+= form_for service, html: { class: "form-horizontal" } do |f|
+  - if service.errors.any?
+    #error_explanation.panel.panel-danger
+      .panel-heading
+        = "#{service.errors.count} #{'erro'.pluralize(service.errors.count)} #{'proibiu'.pluralize(service.errors.count)} este tratamento de salvar:"
+      .panel-body
+        ul
+        - service.errors.full_messages.each do |message|
+          li.text-danger
+            = message
+
+  .form-group
+    = f.label :name, class: "col-sm-2 control-label"
+    .col-sm-10
+      = f.text_field :name, class: "form-control"
+
+  .form-group
+    = f.label :description, class: "col-sm-2 control-label"
+    .col-sm-10
+      = f.text_area :description, class: "form-control"
+
+  .form-group
+    = f.label :duration, class: "col-sm-2 control-label"
+    .col-sm-10
+      = f.select :duration, Service::VALID_DURATIONS, {}, class: "form-control"
+
+  .form-group
+    .col-sm-offset-2.col-sm-10
+      .checkbox
+        = f.label :active do
+          = f.check_box :active
+          | Ativo?
+
+  .form-group
+    .col-sm-12.text-right
+      .btn-group
+        = link_to services_path, class: "btn btn-sm btn-default" do
+          span.glyphicon.glyphicon-menu-left
+          | Voltar
+        = button_tag type: "submit", class: "btn btn-sm btn-success" do
+          span.glyphicon.glyphicon-floppy-disk
+          | Salvar
+        - if ["edit", "update"].include? params[:action] && policy(service).show?
+          = link_to service, class: "btn btn-sm btn-primary" do
+            span.glyphicon.glyphicon-eye-open
+            | Ver

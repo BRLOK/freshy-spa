@@ -3,8 +3,14 @@ pt-BR:
   "false": Não
   activerecord:
     models:
+      service: Tratamento
       user: Usuário
     attributes:
+      service:
+        name: Nome
+        description: Descrição
+        duration: Duração (minutos)
+        active: Ativo?
       user:
         name: Nome
         email: E-mail
@@ -12,6 +18,7 @@ pt-BR:
         password_confirmation: Confirmação de senha
         role: Perfil
         active: Ativo?
+        services: Habilitações
   enums:
     user:
       role:
