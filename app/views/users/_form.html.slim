@@ -19,20 +19,22 @@
     .col-sm-10
       = f.text_field :email, class: "form-control"
 
-  .form-group
-    = f.label :password, class: "col-sm-2 control-label"
-    .col-sm-10
-      = f.password_field :password, class: "form-control"
+  - if policy(user).change_password?
+    .form-group
+      = f.label :password, class: "col-sm-2 control-label"
+      .col-sm-10
+        = f.password_field :password, class: "form-control"
 
-  .form-group
-    = f.label :password_confirmation, class: "col-sm-2 control-label"
-    .col-sm-10
-      = f.password_field :password_confirmation, class: "form-control"
+    .form-group
+      = f.label :password_confirmation, class: "col-sm-2 control-label"
+      .col-sm-10
+        = f.password_field :password_confirmation, class: "form-control"
 
-  .form-group
-    = f.label :role, class: "col-sm-2 control-label"
-    .col-sm-10
-      = f.select :role, User::VALID_ROLES.map{ |role| [I18n.t("enums.user.role.#{role}"), role] }, {}, class: "form-control"
+  - if policy(user).change_role?
+    .form-group
+      = f.label :role, class: "col-sm-2 control-label"
+      .col-sm-10
+        = f.select :role, User::VALID_ROLES.map{ |role| [I18n.t("enums.user.role.#{role}"), role] }, {}, class: "form-control"
 
   .form-group
     = f.label :services, class: "col-sm-2 control-label"

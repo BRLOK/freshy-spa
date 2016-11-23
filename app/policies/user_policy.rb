@@ -19,6 +19,14 @@ class UserPolicy < ApplicationPolicy
     user.admin?
   end
 
+  def change_password?
+    user.admin?
+  end
+
+  def change_role?
+    user.admin?
+  end
+
   class Scope < Scope
     def resolve
       if user.admin?
