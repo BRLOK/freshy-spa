@@ -20,7 +20,7 @@ html
             - if flash.present?
               - flash.each do |status, message|
                 = content_tag :div, message, class: "alert #{class_for_alert(status)}"
-            = form_tag({ action: 'create' }, {class: 'form-horizontal'}) do
+            = form_tag({ action: 'create' }, { class: 'form-horizontal' }) do
               fieldset
                 legend Acesso ao sistema - Freshy Spa
                 .form-group
@@ -35,4 +35,4 @@ html
                   .col-sm-offset-2.col-sm-10
                     = button_tag type: "submit", class: "btn btn-sm btn-success" do
                       span.glyphicon.glyphicon-log-in
-                      | Entrar
+                      | Acessar

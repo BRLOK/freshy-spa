@@ -1,0 +1,36 @@
+.page-header
+  h1 Listando clientes
+.pull-right
+  - if policy(Customer).create?
+    = link_to new_customer_path, class: "btn btn-sm btn-success" do
+      span.glyphicon.glyphicon-plus
+      | Novo cliente
+
+table.table.table-hover
+  thead
+    tr
+      th Nome
+      th E-mail
+      th CPF
+      th Telefone
+      th Ativo?
+      th
+
+  tbody
+    - @customers.each do |customer|
+      tr
+        td = customer.name
+        td = customer.email
+        td = customer.cpf
+        td = customer.telephone
+        td = customer.active
+        td
+          .btn-group
+            - if policy(customer).show?
+              = link_to customer, class: "btn btn-sm btn-primary" do
+                span.glyphicon.glyphicon-eye-open
+                | Ver
+            - if policy(customer).update?
+              = link_to edit_customer_path(customer), class: "btn btn-sm btn-warning" do
+                span.glyphicon.glyphicon-pencil
+                | Editar
