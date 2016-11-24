@@ -158,6 +158,8 @@ GEM
       tzinfo (>= 1.0.0)
     uglifier (3.0.2)
       execjs (>= 0.3.0, < 3)
+    validates_cpf_cnpj (0.2.0)
+      activemodel (>= 3.0.0)
     web-console (3.3.1)
       actionview (>= 5.0)
       activemodel (>= 5.0)
@@ -189,6 +191,7 @@ DEPENDENCIES
   turbolinks (~> 5)
   tzinfo-data
   uglifier (>= 1.3.0)
+  validates_cpf_cnpj
   web-console
 
 BUNDLED WITH

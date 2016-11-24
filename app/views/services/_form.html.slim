@@ -5,9 +5,9 @@
         = "#{service.errors.count} #{'erro'.pluralize(service.errors.count)} #{'proibiu'.pluralize(service.errors.count)} este tratamento de salvar:"
       .panel-body
         ul
-        - service.errors.full_messages.each do |message|
-          li.text-danger
-            = message
+          - service.errors.full_messages.each do |message|
+            li.text-danger
+              = message
 
   .form-group
     = f.label :name, class: "col-sm-2 control-label"

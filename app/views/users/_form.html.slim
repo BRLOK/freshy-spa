@@ -5,9 +5,9 @@
         = "#{user.errors.count} #{'erro'.pluralize(user.errors.count)} #{'proibiu'.pluralize(user.errors.count)} este usuário de salvar:"
       .panel-body
         ul
-        - user.errors.full_messages.each do |message|
-          li.text-danger
-            = message
+          - user.errors.full_messages.each do |message|
+            li.text-danger
+              = message
 
   .form-group
     = f.label :name, class: "col-sm-2 control-label"
