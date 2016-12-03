@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
   root to: "dashboard#index"
 
-  resources :dashboard, only: :index, path: "painel"
-  resources :services, except: :destroy, path: "servicos"
-  resources :users, except: :destroy, path: "usuarios"
+  scope(path_names: { new: "novo", edit: "editar" }) do
+    resources :dashboard, only: :index, path: "painel"
+    resources :customers, except: :destroy, path: "clientes"
+    resources :services, except: :destroy, path: "tratamentos"
+    resources :users, except: :destroy, path: "usuarios"
+  end
 
   controller :sessions do
     get "login" => :new

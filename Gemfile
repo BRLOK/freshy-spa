@@ -30,8 +30,9 @@ gem 'codus'
 gem 'rails-i18n', '~> 5.0.0' # For 5.0.x
 gem 'slim'
 gem 'activemodel-serializers-xml'
-gem 'draper'
-gem "pundit"
+gem 'draper', github: 'drapergem/draper'
+gem 'pundit'
+gem 'validates_cpf_cnpj'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

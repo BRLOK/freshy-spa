@@ -3,9 +3,16 @@ pt-BR:
   "false": Não
   activerecord:
     models:
+      customer: Cliente
       service: Tratamento
       user: Usuário
     attributes:
+      customer:
+        name: Nome
+        email: E-mail
+        cpf: CPF
+        telephone: Telefone
+        active: Ativo?
       service:
         name: Nome
         description: Descrição

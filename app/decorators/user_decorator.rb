@@ -10,6 +10,10 @@ class UserDecorator < Draper::Decorator
   end
 
   def services
-    object.services.pluck(:name).join(", ")
+    if object.services.present?
+      object.services.pluck(:name).join(", ")
+    else
+      "-"
+    end
   end
 end

@@ -1,14 +1,14 @@
-class UserPolicy < ApplicationPolicy
+class CustomerPolicy < ApplicationPolicy
   def index?
     user.admin? || user.operator?
   end
 
   def show?
-    user.admin? || user.operator?
+    true
   end
 
   def create?
-    user.admin?
+    user.admin? || user.operator?
   end
 
   def update?
@@ -16,20 +16,12 @@ class UserPolicy < ApplicationPolicy
   end
 
   def activate?
-    user.admin?
-  end
-
-  def change_password?
-    user.admin?
-  end
-
-  def change_role?
-    user.admin?
+    user.admin? || user.operator?
   end
 
   class Scope < Scope
     def resolve
-      if user.admin?
+      if user.admin? || user.operator?
         scope.all
       else
         scope.active

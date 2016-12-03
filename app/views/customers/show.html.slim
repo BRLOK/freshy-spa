@@ -1,0 +1,40 @@
+.page-header
+  h1 Visualizando cliente
+
+form.form-horizontal
+  .form-group
+    label.col-sm-2.control-label Nome
+    .col-sm-10
+      p.form-control-static
+        = @customer.name
+  .form-group
+    label.col-sm-2.control-label E-mail
+    .col-sm-10
+      p.form-control-static
+        = @customer.email
+  .form-group
+    label.col-sm-2.control-label CPF
+    .col-sm-10
+      p.form-control-static
+        = @customer.cpf
+  .form-group
+    label.col-sm-2.control-label Telefone
+    .col-sm-10
+      p.form-control-static
+        = @customer.telephone
+  .form-group
+    label.col-sm-2.control-label Ativo?
+    .col-sm-10
+      p.form-control-static
+        = @customer.active
+
+  .form-group
+    .col-sm-12.text-right
+      .btn-group
+        = link_to customers_path, class: "btn btn-sm btn-default" do
+          span.glyphicon.glyphicon-menu-left
+          | Voltar
+        - if policy(@customer).update?
+          = link_to edit_customer_path(@customer), class: "btn btn-sm btn-warning" do
+            span.glyphicon.glyphicon-pencil
+            | Editar
