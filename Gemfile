@@ -33,6 +33,7 @@ gem 'activemodel-serializers-xml'
 gem 'draper', github: 'drapergem/draper'
 gem 'pundit'
 gem 'validates_cpf_cnpj'
+gem "simple_calendar", "~> 2.0"
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
