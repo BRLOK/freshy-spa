@@ -19,4 +19,8 @@ class Attendance < ApplicationRecord
       some_status == self.status
     end
   end
+
+  def start_time
+    self.scheduled_for.to_date
+  end
 end

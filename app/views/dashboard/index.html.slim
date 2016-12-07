@@ -4,3 +4,13 @@
     = current_user.name
 
 = I18n.l Date.current, format: :long
+
+= month_calendar events: @attendances do |date, attendances|
+  = date.day
+  br/
+  - attendances.each do |attendance|
+    - attendance.items.each do |item|
+      span.label.label-primary
+        = "#{attendance.customer_name}: "
+        = "#{item.service.name} - #{item.collaborator.name}"
+      br/

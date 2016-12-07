@@ -12,6 +12,7 @@ table.table.table-hover
       th Cliente
       th Agendado para
       th Status
+      th Tratamentos
       th
 
   tbody
@@ -20,6 +21,7 @@ table.table.table-hover
         td = link_to attendance.customer_name, attendance.customer
         td = attendance.scheduled_for
         td = attendance.status
+        td = attendance.items_text
         td
           .btn-group
             - if policy(attendance).show?

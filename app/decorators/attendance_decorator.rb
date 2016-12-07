@@ -6,10 +6,18 @@ class AttendanceDecorator < Draper::Decorator
   end
 
   def scheduled_for
-    I18n.l object.scheduled_for
+    I18n.l object.scheduled_for, format: :long
   end
 
   def customer_name
     object.customer.name
+  end
+
+  def items_text
+    text = ""
+    object.items.each do |item|
+      text += "#{item.service.name} - #{item.collaborator.name}<br/>"
+    end
+    text.html_safe
   end
 end
