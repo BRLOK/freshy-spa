@@ -33,6 +33,9 @@ html
                 - if policy(Customer).index?
                   li class=active_class(params, 'customers')
                     = link_to "Clientes", customers_path
+                - if policy(Attendance).index?
+                  li class=active_class(params, 'attendances')
+                    = link_to "Atendimentos", attendances_path
               ul.nav.navbar-nav.navbar-right
                 li.dropdown
                   = link_to '#', class: "dropdown-toggle", role: "button", data: { toggle: "dropdown" } do

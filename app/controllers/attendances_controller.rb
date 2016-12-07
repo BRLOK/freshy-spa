@@ -3,7 +3,7 @@ class AttendancesController < ApplicationController
 
   # GET /attendances
   def index
-    @attendances = policy_scope(Attendance.order(:scheduled_for, :desc)).decorate
+    @attendances = policy_scope(Attendance.order(scheduled_for: :desc)).decorate
   end
 
   # GET /attendances/1
@@ -14,7 +14,7 @@ class AttendancesController < ApplicationController
 
   # GET /attendances/new
   def new
-    @attendance = Attendance.new
+    @attendance = Attendance.new(status: "scheduled")
     authorize @attendance
   end
 
@@ -60,6 +60,6 @@ class AttendancesController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def attendance_params
     params.require(:attendance).
-      permit(:scheduled_for, :status)
+      permit(:customer_id, :scheduled_for, :status)
   end
 end

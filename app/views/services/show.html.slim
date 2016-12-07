@@ -27,8 +27,8 @@ form.form-horizontal
     .col-sm-12.text-right
       .btn-group
         = link_to services_path, class: "btn btn-sm btn-default" do
-          span.glyphicon.glyphicon-menu-left
-          | Voltar
+          span.glyphicon.glyphicon-list-alt
+          | Lista
         - if policy(@service).update?
           = link_to edit_service_path(@service), class: "btn btn-sm btn-warning" do
             span.glyphicon.glyphicon-pencil

@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root to: "dashboard#index"
 
   scope(path_names: { new: "novo", edit: "editar" }) do
-    resources :attendances, except: :destroy, path: "atendimento"
+    resources :attendances, except: :destroy, path: "atendimentos"
     resources :dashboard, only: :index, path: "painel"
     resources :customers, except: :destroy, path: "clientes"
     resources :services, except: :destroy, path: "tratamentos"

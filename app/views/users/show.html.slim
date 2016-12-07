@@ -32,8 +32,8 @@ form.form-horizontal
     .col-sm-12.text-right
       .btn-group
         = link_to users_path, class: "btn btn-sm btn-default" do
-          span.glyphicon.glyphicon-menu-left
-          | Voltar
+          span.glyphicon.glyphicon-list-alt
+          | Lista
         - if policy(@user).update?
           = link_to edit_user_path(@user), class: "btn btn-sm btn-warning" do
             span.glyphicon.glyphicon-pencil

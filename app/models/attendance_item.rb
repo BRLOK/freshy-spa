@@ -1,7 +1,7 @@
 class AttendanceItem < ApplicationRecord
   belongs_to :attendance
   belongs_to :service
-  belongs_to :collaborator, class_name: User
+  belongs_to :collaborator, class_name: User, foreign_key: :user_id
 
   scope :pending,         -> { where("started_at IS NULL") }
   scope :in_progress,     -> { where("started_at IS NOT NULL && finished_at IS NULL") }
