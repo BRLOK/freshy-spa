@@ -10,7 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161123221432) do
+ActiveRecord::Schema.define(version: 20161207204921) do
+
+  create_table "attendance_items", force: :cascade do |t|
+    t.integer  "service_id"
+    t.integer  "user_id"
+    t.datetime "started_at"
+    t.index ["service_id"], name: "index_attendance_items_on_service_id"
+    t.index ["user_id"], name: "index_attendance_items_on_user_id"
+  end
+
+  create_table "attendances", force: :cascade do |t|
+    t.integer  "customer_id"
+    t.date     "scheduled_for"
+    t.string   "status"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["customer_id"], name: "index_attendances_on_customer_id"
+  end
 
   create_table "customers", force: :cascade do |t|
     t.string   "name"
