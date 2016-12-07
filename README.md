@@ -69,6 +69,9 @@ Features:
   ```sh
   rails s
   ```
+7. Open a browser and access http://localhost:3000/
+
+8. Have fun!
 
 ## Development Team
 
