@@ -3,10 +3,22 @@ pt-BR:
   "false": Não
   activerecord:
     models:
+      attendance: Atendimento
+      attendance_item: Item de atendimento
       customer: Cliente
       service: Tratamento
       user: Usuário
     attributes:
+      attendance:
+        scheduled_for: Agendado para
+        status: Status
+        customer: Cliente
+      attendance_item:
+        attendance: Atendimento
+        collaborator: Colaborador
+        service: Tratamento
+        started_at: Iníciado às
+        finished_at: Finalizado às
       customer:
         name: Nome
         email: E-mail
