@@ -34,6 +34,12 @@ Features:
   ```sh
   gem install rails
   ```
+6. Configure yout GitHub account
+
+  ```sh
+  git config --global user.name "YOUR NAME FROM GITHUB ACCOUNT"
+  git config --global user.email "YOUR EMAIL ADDRESS FROM GITHUB ACCOUNT"
+  ```
   
 ## APP Setup
 
@@ -72,6 +78,8 @@ Features:
 7. Open a browser and access http://localhost:3000/
 
 8. Have fun!
+
+To shut down the server, simply `ctrl + c` on command line prompt
 
 ## Development Team
 
