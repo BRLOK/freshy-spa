@@ -1,8 +1,8 @@
 class Attendance < ApplicationRecord
   belongs_to :customer
-  has_many :attendance_items, as: :items
+  has_many :items, class_name: AttendanceItem
   has_many :services, through: :attendance_items
-  has_many :users, through: :attendance_items, as: :collaborators
+  has_many :collaborators, through: :attendance_items, class_name: User
 
   VALID_STATUS = ["scheduled", "in_progress", "finished", "expired"]
 
@@ -12,6 +12,7 @@ class Attendance < ApplicationRecord
   scope :scheduled_for,         -> (date) { where(scheduled_for: date) }
   scope :scheduled_for_before,  -> (date) { where("scheduled_for >= ?", date) }
   scope :scheduled_for_after,   -> (date) { where("scheduled_for <= ?", date) }
+  scope :by_collaborator,       -> (collaborator) { joins(:items).merge(AttendanceItem.by_collaborator(collaborator)) }
 
   VALID_STATUS.each do |some_status|
     define_method "#{some_status}?" do

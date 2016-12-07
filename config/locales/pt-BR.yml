@@ -44,3 +44,9 @@ pt-BR:
         admin: Administrador
         operator: Operador
         collaborator: Colaborador
+    attendance:
+      status:
+        scheduled: Agendado
+        in_progress: Em andamento
+        finished: Terminado
+        expired: Expirado
