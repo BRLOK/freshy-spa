@@ -1,16 +1,23 @@
-.page-header
-  h1
-    | Bem vindo,&nbsp;
-    = current_user.name
+.pull-right
+  = link_to(I18n.l(Date.current, format: :long), root_path, class: "btn btn-default")
 
-= I18n.l Date.current, format: :long
-
-= month_calendar events: @attendances do |date, attendances|
-  = date.day
-  br/
-  - attendances.each do |attendance|
-    - attendance.items.each do |item|
-      span.label.label-primary
-        = "#{attendance.customer_name}: "
-        = "#{item.service.name} - #{item.collaborator.name}"
-      br/
+- if current_user.collaborator?
+  = week_calendar events: @attendances do |date, attendances|
+    = date.day
+    br/
+    - attendances.each do |attendance|
+      - attendance.items.each do |item|
+        span.label.label-primary
+          = "#{attendance.customer_name}: "
+          = "#{item.service.name} - #{item.collaborator.name}"
+        br/
+- else
+  = month_calendar events: @attendances do |date, attendances|
+    = date.day
+    br/
+    - attendances.each do |attendance|
+      - attendance.items.each do |item|
+        span.label.label-primary
+          = "#{attendance.customer_name}: "
+          = "#{item.service.name} - #{item.collaborator.name}"
+        br/

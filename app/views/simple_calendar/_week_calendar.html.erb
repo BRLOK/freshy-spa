@@ -1,9 +1,19 @@
 <div class="simple-calendar">
-  <div class="calendar-heading">
-    <%= link_to t('simple_calendar.previous', default: 'Previous'), calendar.url_for_previous_view %>
-    <span class="calendar-title">Week <%= calendar.week_number %></span>
-    <%= link_to t('simple_calendar.next', default: 'Next'), calendar.url_for_next_view %>
-  </div>
+  <nav class="calendar-heading">
+    <ul class="pager">
+      <li>
+        <%= link_to calendar.url_for_previous_view, class: "btn btn-link" do %>
+          <span class="glyphicon glyphicon-chevron-left"></span>
+        <% end %>
+      </li>
+      <span class="calendar-title"><%= t('date.month_names')[start_date.month] %> <%= start_date.year %></span>
+      <li>
+        <%= link_to calendar.url_for_next_view, class: "btn btn-link" do %>
+          <span class="glyphicon glyphicon-chevron-right"></span>
+        <% end %>
+      </li>
+    </ul>
+  </nav>
 
   <table class="table table-striped">
     <thead>

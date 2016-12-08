@@ -1,5 +1,5 @@
 class DashboardController < ApplicationController
   def index
-    @attendances = policy_scope(Attendance.order(scheduled_for: :desc)).decorate
+    @attendances = policy_scope(Attendance).decorate
   end
 end

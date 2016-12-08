@@ -12,7 +12,7 @@ class Attendance < ApplicationRecord
   scope :scheduled_for,         -> (date) { where(scheduled_for: date) }
   scope :scheduled_for_before,  -> (date) { where("scheduled_for >= ?", date) }
   scope :scheduled_for_after,   -> (date) { where("scheduled_for <= ?", date) }
-  scope :by_collaborator,       -> (collaborator) { joins(:items).merge(AttendanceItem.by_collaborator(collaborator)) }
+  scope :by_collaborator,       -> (collaborator) { joins(:items).merge(AttendanceItem.by_collaborator(collaborator)).uniq }
 
   VALID_STATUS.each do |some_status|
     define_method "#{some_status}?" do
