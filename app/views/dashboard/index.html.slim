@@ -6,10 +6,10 @@
     = date.day
     br/
     - attendances.each do |attendance|
-      = attendance.show_for_calendar
+      = show_attendance_for_calendar(attendance)
 - else
   = month_calendar events: @attendances do |date, attendances|
     = date.day
     br/
     - attendances.each do |attendance|
-      = attendance.show_for_calendar
+      = show_attendance_for_calendar(attendance)

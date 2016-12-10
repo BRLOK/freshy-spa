@@ -1,0 +1,35 @@
+= form_for attendance, html: { class: "form-horizontal" } do |f|
+  - if attendance.errors.any?
+    #error_explanation.panel.panel-danger
+      .panel-heading
+        = "#{attendance.errors.count} #{'erro'.pluralize(attendance.errors.count)} #{'proibiu'.pluralize(attendance.errors.count)} este atendimento de salvar:"
+      .panel-body
+        ul
+          - attendance.errors.full_messages.each do |message|
+            li.text-danger
+              = message
+
+  - if ["new", "create"].include?(params[:action]) || policy(attendance).change_customer?
+    .form-group
+      = f.label :customer, class: "col-sm-2 control-label"
+      .col-sm-10
+        = f.select :customer, Customer.active.map{ |customer| [customer.name, customer.id] }, {}, class: "form-control"
+
+  .form-group
+    = f.label :scheduled_for, class: "col-sm-2 control-label"
+    .col-sm-10
+      = f.text_field :scheduled_for, class: "form-control"
+
+  - if policy(attendance).change_status?
+    .form-group
+      = f.label :status, class: "col-sm-2 control-label"
+      .col-sm-10
+        = f.select :status, Attendance::VALID_STATUS.map{ |status| [I18n.t("enums.attendance.status.#{status}"), status] }, {}, class: "form-control"
+
+  .form-group
+    .col-sm-12.text-right
+      .btn-group
+        = attendances_link
+        = submit_link
+        - if ["edit", "update"].include?(params[:action]) && policy(attendance).show?
+          = show_attendance_link(attendance.id)

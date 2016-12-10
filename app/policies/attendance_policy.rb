@@ -15,6 +15,14 @@ class AttendancePolicy < ApplicationPolicy
     user.admin? || user.operator?
   end
 
+  def change_customer?
+    user.admin?
+  end
+
+  def change_status?
+    user.admin?
+  end
+
   class Scope < Scope
     def resolve
       if user.admin? || user.operator?

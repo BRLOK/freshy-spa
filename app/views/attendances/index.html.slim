@@ -16,13 +16,13 @@ table.table.table-hover
   tbody
     - @attendances.each do |attendance|
       tr
-        td = attendance.customer_link
+        td = show_customer_name_link(attendance.customer)
         td = attendance.scheduled_for
         td = attendance.status
         td = attendance.items_text
         td
           .btn-group
             - if policy(attendance).show?
-              = attendance.show_link
+              = show_attendance_link(attendance.id)
             - if policy(attendance).update?
-              = attendance.edit_link
+              = edit_attendance_link(attendance.id)
