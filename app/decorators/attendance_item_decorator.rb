@@ -19,7 +19,7 @@ class AttendanceItemDecorator < Draper::Decorator
   end
 
   def collaborator_link
-    h.link_to collaborator_name, attendance_item.collaborator.name
+    h.link_to collaborator_name, attendance_item.collaborator
   end
 
   def service_name
@@ -27,6 +27,6 @@ class AttendanceItemDecorator < Draper::Decorator
   end
 
   def service_link
-    h.link_to service_name, attendance_item.service.name
+    h.link_to service_name, attendance_item.service
   end
 end

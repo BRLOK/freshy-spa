@@ -37,4 +37,23 @@ class AttendanceDecorator < Draper::Decorator
       "<span class='glyphicon glyphicon-pencil'></span>Editar".html_safe
     end
   end
+
+  def show_for_calendar
+    h.link_to attendance, class: "btn btn-xs #{button_class_for_calendar}" do
+      "#{attendance.customer.name} - #{attendance.scheduled_for.to_s(:time)}"
+    end
+  end
+
+  def button_class_for_calendar
+    case attendance.status
+    when "scheduled"
+      "btn-primary"
+    when "in_progress"
+      "btn-success"
+    when "finished"
+      "btn-info"
+    when "expired"
+      "btn-danger"
+    end
+  end
 end

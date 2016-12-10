@@ -1,23 +1,15 @@
 .pull-right
-  = link_to(I18n.l(Date.current, format: :long), root_path, class: "btn btn-default")
+  = today_link
 
 - if current_user.collaborator?
   = week_calendar events: @attendances do |date, attendances|
     = date.day
     br/
     - attendances.each do |attendance|
-      - attendance.items.each do |item|
-        span.label.label-primary
-          = "#{attendance.customer_name}: "
-          = "#{item.service.name} - #{item.collaborator.name}"
-        br/
+      = attendance.show_for_calendar
 - else
   = month_calendar events: @attendances do |date, attendances|
     = date.day
     br/
     - attendances.each do |attendance|
-      - attendance.items.each do |item|
-        span.label.label-primary
-          = "#{attendance.customer_name}: "
-          = "#{item.service.name} - #{item.collaborator.name}"
-        br/
+      = attendance.show_for_calendar

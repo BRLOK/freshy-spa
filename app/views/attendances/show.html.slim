@@ -52,6 +52,7 @@ form.form-horizontal
   .form-group
     .col-sm-12.text-right
       .btn-group
+        = dashboard_link
         = attendances_link
         - if policy(@attendance).update?
           = @attendance.edit_link
