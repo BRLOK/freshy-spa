@@ -12,7 +12,7 @@ class AttendanceItem < ApplicationRecord
   scope :by_collaborator, -> (collaborator) { where(user_id: collaborator.id) }
 
   def collaborator_must_be_able_to_perform_the_service
-    if !collaborator.service_ids.include?(service_id)
+    if collaborator.present? && !collaborator.service_ids.include?(service_id)
       errors.add(:collaborator, "não está habilitado para executar o tratamento")
     end
   end

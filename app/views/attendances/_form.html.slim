@@ -9,11 +9,19 @@
             li.text-danger
               = message
 
+  .form-group
+    .col-sm-12.text-right
+      .btn-group
+        = attendances_link
+        = submit_link
+        - if ["edit", "update"].include?(params[:action]) && policy(attendance).show?
+          = show_attendance_link(attendance.id)
+
   - if ["new", "create"].include?(params[:action]) || policy(attendance).change_customer?
     .form-group
       = f.label :customer, class: "col-sm-2 control-label"
       .col-sm-10
-        = f.select :customer, Customer.active.map{ |customer| [customer.name, customer.id] }, {}, class: "form-control"
+        = f.select :customer_id, Customer.active.map{ |customer| [customer.name, customer.id] }, {}, class: "form-control"
 
   .form-group
     = f.label :scheduled_for, class: "col-sm-2 control-label"
@@ -25,6 +33,16 @@
       = f.label :status, class: "col-sm-2 control-label"
       .col-sm-10
         = f.select :status, Attendance::VALID_STATUS.map{ |status| [I18n.t("enums.attendance.status.#{status}"), status] }, {}, class: "form-control"
+
+  #items
+    = f.simple_fields_for :items do |item|
+      .row
+        = render 'item_fields', f: item
+    .form-group
+      .col-sm-12.text-right
+        = link_to_add_association f, :items, class: "btn btn-sm btn-success" do
+          span.glyphicon.glyphicon-plus
+          = "Adicionar #{AttendanceItem.model_name.human}"
 
   .form-group
     .col-sm-12.text-right

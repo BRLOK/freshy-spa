@@ -1,0 +1,14 @@
+.nested-fields.col-sm-12
+  .form-group
+    = f.label :service, class: "col-sm-2 control-label"
+    .col-sm-3
+      = f.select :service_id, Service.active.map{ |service| [service.name, service.id] },
+        { include_blank: "Escolha um tratamento" }, class: "form-control"
+    = f.label :collaborator, class: "col-sm-2 control-label"
+    .col-sm-3
+      = f.select :user_id, User.active.collaborators.map{ |user| [user.name, user.id] },
+        { include_blank: "Escolha um colaborador" }, class: "form-control"
+    .col-sm-2.text-right
+      = link_to_remove_association f, class: "btn btn-sm btn-danger" do
+        span.glyphicon.glyphicon-minus
+        | Remover

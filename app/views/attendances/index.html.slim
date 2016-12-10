@@ -1,5 +1,6 @@
 .page-header
-  h1 Listando atendimentos
+  h1
+    = "Listando #{Attendance.model_name.human.pluralize}"
 .pull-right
   - if policy(Attendance).create?
     = new_attendance_link

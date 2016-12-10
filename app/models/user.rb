@@ -12,7 +12,8 @@ class User < ApplicationRecord
   validates :role, presence: true, inclusion: { in: VALID_ROLES }
   has_secure_token :auth_token
 
-  scope :active, -> { where(active: true) }
+  scope :active,        -> { where(active: true) }
+  scope :collaborators, -> { where(role: "collaborator") }
 
   VALID_ROLES.each do |some_role|
     define_method "#{some_role}?" do

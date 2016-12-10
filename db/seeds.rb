@@ -90,29 +90,25 @@ Customer.create([
     active: true
   }
 ])
+collaborator = User.find_by_role("collaborator")
 Attendance.create([
   {
     customer_id: Customer.first.id,
     scheduled_for: 2.days.from_now,
-    status: "scheduled"
-  }
-])
-collaborator = User.find_by_role("collaborator")
-attendance = Attendance.first
-AttendanceItem.create([
-  {
-    attendance_id: attendance.id,
-    user_id: collaborator.id,
-    service_id: collaborator.service_ids[0]
-  },
-  {
-    attendance_id: attendance.id,
-    user_id: collaborator.id,
-    service_id: collaborator.service_ids[1]
-  },
-  {
-    attendance_id: attendance.id,
-    user_id: collaborator.id,
-    service_id: collaborator.service_ids[2]
+    status: "scheduled",
+    items_attributes: [
+      {
+        user_id: collaborator.id,
+        service_id: collaborator.service_ids[0]
+      },
+      {
+        user_id: collaborator.id,
+        service_id: collaborator.service_ids[1]
+      },
+      {
+        user_id: collaborator.id,
+        service_id: collaborator.service_ids[2]
+      }
+    ]
   }
 ])

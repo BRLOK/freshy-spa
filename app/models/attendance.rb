@@ -3,6 +3,7 @@ class Attendance < ApplicationRecord
   has_many :items, class_name: AttendanceItem
   has_many :services, through: :attendance_items
   has_many :collaborators, through: :attendance_items, class_name: User
+  accepts_nested_attributes_for :items
 
   VALID_STATUS = ["scheduled", "in_progress", "finished", "expired"]
 
