@@ -12,12 +12,16 @@
  *
  *= require_tree .
  *= require_self
+ *= require bootstrap
+ *= require bootstrap-sprockets
+ *= require bootstrap-mincer
+ *= require bootstrap-compass
  *= require simple_calendar
  *= require dashboard
  */
 
 body {
-  padding-top: 70px;
+  padding-top: 50px;
 }
 
 .navbar-header .navbar-brand img {

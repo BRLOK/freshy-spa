@@ -2,9 +2,7 @@
   h1 Listando atendimentos
 .pull-right
   - if policy(Attendance).create?
-    = link_to new_attendance_path, class: "btn btn-sm btn-success" do
-      span.glyphicon.glyphicon-plus
-      | Novo atendimento
+    = new_attendance_link
 
 table.table.table-hover
   thead
@@ -18,17 +16,13 @@ table.table.table-hover
   tbody
     - @attendances.each do |attendance|
       tr
-        td = link_to attendance.customer_name, attendance.customer
+        td = attendance.customer_link
         td = attendance.scheduled_for
         td = attendance.status
         td = attendance.items_text
         td
           .btn-group
             - if policy(attendance).show?
-              = link_to attendance, class: "btn btn-sm btn-primary" do
-                span.glyphicon.glyphicon-eye-open
-                | Ver
+              = attendance.show_link
             - if policy(attendance).update?
-              = link_to edit_attendance_path(attendance), class: "btn btn-sm btn-warning" do
-                span.glyphicon.glyphicon-pencil
-                | Editar
+              = attendance.edit_link
