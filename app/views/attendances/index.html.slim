@@ -31,3 +31,7 @@ table.table.table-hover
               = show_attendance_link(attendance.id)
             - if policy(attendance).update?
               = edit_attendance_link(attendance.id)
+
+.pull-right
+  - if policy(Attendance).create?
+    = new_attendance_link

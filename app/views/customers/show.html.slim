@@ -3,6 +3,17 @@
 
 form.form-horizontal
   .form-group
+    .col-sm-12.text-right
+      .btn-group
+        = link_to customers_path, class: "btn btn-sm btn-default" do
+          span.glyphicon.glyphicon-list-alt
+          | Lista
+        - if policy(@customer).update?
+          = link_to edit_customer_path(@customer), class: "btn btn-sm btn-warning" do
+            span.glyphicon.glyphicon-pencil
+            | Editar
+
+  .form-group
     label.col-sm-2.control-label Nome
     .col-sm-10
       p.form-control-static

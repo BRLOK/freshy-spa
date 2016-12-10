@@ -10,6 +10,20 @@
               = message
 
   .form-group
+    .col-sm-12.text-right
+      .btn-group
+        = link_to users_path, class: "btn btn-sm btn-default" do
+          span.glyphicon.glyphicon-list-alt
+          | Lista
+        = button_tag type: "submit", class: "btn btn-sm btn-success" do
+          span.glyphicon.glyphicon-floppy-disk
+          | Salvar
+        - if ["edit", "update"].include?(params[:action]) && policy(user).show?
+          = link_to user, class: "btn btn-sm btn-primary" do
+            span.glyphicon.glyphicon-eye-open
+            | Ver
+
+  .form-group
     = f.label :name, class: "col-sm-2 control-label"
     .col-sm-10
       = f.text_field :name, class: "form-control"

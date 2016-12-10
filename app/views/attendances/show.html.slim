@@ -10,6 +10,7 @@ form.form-horizontal
         = attendances_link
         - if policy(@attendance).update?
           = edit_attendance_link(@attendance.id)
+
   .form-group
     label.col-sm-2.control-label
       = Attendance.human_attribute_name("customer")

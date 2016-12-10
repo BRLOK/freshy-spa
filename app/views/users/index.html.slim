@@ -34,3 +34,9 @@ table.table.table-hover
               = link_to edit_user_path(user), class: "btn btn-sm btn-warning" do
                 span.glyphicon.glyphicon-pencil
                 | Editar
+
+.pull-right
+  - if policy(User).create?
+    = link_to new_user_path, class: "btn btn-sm btn-success" do
+      span.glyphicon.glyphicon-plus
+      | Novo usuário
