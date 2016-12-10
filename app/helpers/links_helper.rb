@@ -61,6 +61,16 @@ module LinksHelper
     link_to customer.name, customer
   end
 
+  # Service Links
+  def show_service_name_link(service)
+    link_to service.name, service
+  end
+
+  # User Links
+  def show_user_name_link(user)
+    link_to user.name, user
+  end
+
   # General Links
   def submit_link
     button_tag type: "submit", class: "btn btn-sm btn-success" do

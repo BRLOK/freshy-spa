@@ -38,10 +38,10 @@ form.form-horizontal
         tr
           td
             p.form-control-static
-              = item.service_link
+              = show_service_name_link(item.service)
           td
             p.form-control-static
-              = item.collaborator_link
+              = show_user_name_link(item.collaborator)
           td
             p.form-control-static
               = item.started_at
