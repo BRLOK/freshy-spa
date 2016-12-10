@@ -7,10 +7,14 @@
 table.table.table-hover
   thead
     tr
-      th Cliente
-      th Agendado para
-      th Status
-      th Tratamentos
+      th
+        = Attendance.human_attribute_name("customer")
+      th
+        = Attendance.human_attribute_name("scheduled_for")
+      th
+        = Attendance.human_attribute_name("status")
+      th
+        = Attendance.human_attribute_name("services")
       th
 
   tbody

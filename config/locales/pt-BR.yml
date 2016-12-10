@@ -13,6 +13,7 @@ pt-BR:
         scheduled_for: Agendado para
         status: Status
         customer: Cliente
+        services: Tratamentos
       attendance_item:
         attendance: Atendimento
         collaborator: Colaborador
