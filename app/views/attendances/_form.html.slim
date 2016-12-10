@@ -23,10 +23,8 @@
       .col-sm-10
         = f.select :customer_id, Customer.active.map{ |customer| [customer.name, customer.id] }, {}, class: "form-control"
 
-  .form-group
-    = f.label :scheduled_for, class: "col-sm-2 control-label"
-    .col-sm-10
-      = f.text_field :scheduled_for, class: "form-control"
+  = f.input :scheduled_for, as: :date_time_picker, wrapper: :inline_input, input_html: {\
+    data: { date_start_date: I18n.l(Date.today), date_start_date: I18n.l(1.year.from_now) } }
 
   - if policy(attendance).change_status?
     .form-group

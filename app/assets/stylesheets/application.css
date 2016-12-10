@@ -14,7 +14,7 @@
  *= require_self
  *= require simple_calendar
  *= require dashboard
- *= require font-awesome
+ *= require components
  *= require bootstrap-datepicker
  *= require clockpicker
  */

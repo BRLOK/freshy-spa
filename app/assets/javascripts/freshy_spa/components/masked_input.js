@@ -8,10 +8,15 @@
 
 
 yojs.define("components.initializeJqueryMasks", function(){
+  $.mask.definitions['6']='[0123456]'
+  $.mask.definitions['4']='[01234]'
   $.mask.definitions['3']='[0123]';
+  $.mask.definitions['2']='[012]'
   $.mask.definitions['1']='[01]'
   $('.js-mask-zip').mask('99999-999');
   $('.js-mask-date').mask('39/19/9999');
+  $('.js-mask-time').mask('24:69');
+  $('.js-mask-datetime').mask('39/19/9999 24:69');
   $('.js-mask-cpf').mask('999.999.999-99');
   $('.js-mask-phone-mobile').mask('(99) 99999-9999');
   $('.js-mask-phone-landline').mask('(99) 9999-9999');
