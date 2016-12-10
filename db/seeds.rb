@@ -1,11 +1,6 @@
 # encoding: utf-8
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
 
 User.destroy_all
 Service.destroy_all
@@ -17,14 +12,20 @@ User.create([
     role: "admin",
     active: true
   }, {
-    name: "Operator",
-    email: "operator@email.com",
+    name: "Operador",
+    email: "operador@email.com",
     password: "123123",
     role: "operator",
     active: true
   }, {
-    name: "Collaborator",
-    email: "collaborator@email.com",
+    name: "Colaborador 1",
+    email: "colaborador1@email.com",
+    password: "123123",
+    role: "collaborator",
+    active: true
+  }, {
+    name: "Colaborador 2",
+    email: "colaborador2@email.com",
     password: "123123",
     role: "collaborator",
     active: true
@@ -71,4 +72,47 @@ Service.create([
     active: true
   }
 ])
-User.find_by_role("collaborator").update(service_ids: Service.pluck(:id))
+User.where(role: "collaborator").each do |collaborator|
+  collaborator.update(service_ids: Service.pluck(:id))
+end
+Customer.create([
+  {
+    name: "Maria",
+    email: "maria@email.com",
+    cpf: "54135422403",
+    telephone: "(12) 34567890",
+    active: true
+  }, {
+    name: "João",
+    email: "joao@email.com",
+    cpf: "22197137506",
+    telephone: "(11) 987654321",
+    active: true
+  }
+])
+Attendance.create([
+  {
+    customer_id: Customer.first.id,
+    scheduled_for: 2.days.from_now,
+    status: "scheduled"
+  }
+])
+collaborator = User.find_by_role("collaborator")
+attendance = Attendance.first
+AttendanceItem.create([
+  {
+    attendance_id: attendance.id,
+    user_id: collaborator.id,
+    service_id: collaborator.service_ids[0]
+  },
+  {
+    attendance_id: attendance.id,
+    user_id: collaborator.id,
+    service_id: collaborator.service_ids[1]
+  },
+  {
+    attendance_id: attendance.id,
+    user_id: collaborator.id,
+    service_id: collaborator.service_ids[2]
+  }
+])

@@ -17,8 +17,8 @@ pt-BR:
         attendance: Atendimento
         collaborator: Colaborador
         service: Tratamento
-        started_at: Iníciado às
-        finished_at: Finalizado às
+        started_at: Horário de inicio
+        finished_at: Horário de termino
       customer:
         name: Nome
         email: E-mail
