@@ -23,6 +23,22 @@ class AttendancePolicy < ApplicationPolicy
     user.admin?
   end
 
+  def start?
+    true
+  end
+
+  def stop?
+    true
+  end
+
+  def start_item?
+    true
+  end
+
+  def stop_item?
+    true
+  end
+
   class Scope < Scope
     def resolve
       if user.admin? || user.operator?

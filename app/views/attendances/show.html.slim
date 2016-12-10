@@ -10,6 +10,10 @@ form.form-horizontal
         = attendances_link
         - if policy(@attendance).update?
           = edit_attendance_link(@attendance.id)
+        - if @attendance.scheduled?
+          = start_attendance_link(@attendance.id)
+        - if @attendance.in_progress?
+          = stop_attendance_link(@attendance.id)
 
   .form-group
     label.col-sm-2.control-label
@@ -41,6 +45,7 @@ form.form-horizontal
           = AttendanceItem.human_attribute_name("started_at")
         th
           = AttendanceItem.human_attribute_name("finished_at")
+        th
     tbody
       - @attendance.items.decorate.each do |item|
         tr
@@ -56,6 +61,11 @@ form.form-horizontal
           td
             p.form-control-static
               = item.finished_at
+          td
+            - if @attendance.in_progress? && item.started_at.blank?
+              = start_attendance_item_link(item.id)
+            - if @attendance.in_progress? && item.started_at.present? && item.finished_at.blank?
+              = stop_attendance_item_link(item.id)
 
   .form-group
     .col-sm-12.text-right
@@ -64,3 +74,7 @@ form.form-horizontal
         = attendances_link
         - if policy(@attendance).update?
           = edit_attendance_link(@attendance.id)
+        - if @attendance.scheduled?
+          = start_attendance_link(@attendance.id)
+        - if @attendance.in_progress?
+          = stop_attendance_link(@attendance.id)

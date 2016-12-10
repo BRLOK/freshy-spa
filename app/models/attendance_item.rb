@@ -22,4 +22,22 @@ class AttendanceItem < ApplicationRecord
       errors.add(:finished_at, "não pode ser antes do horário de início")
     end
   end
+
+  def start!
+    if self.started_at.present? || !self.attendance.in_progress?
+      raise "Não é possível iniciar este tratamento"
+    else
+      self.started_at = DateTime.current
+      self.save!
+    end
+  end
+
+  def stop!
+    if self.finished_at.present? || !self.attendance.in_progress?
+      raise "Não é possível encerrar este tratamento"
+    else
+      self.finished_at = DateTime.current
+      self.save!
+    end
+  end
 end

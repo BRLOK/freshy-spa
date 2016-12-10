@@ -28,6 +28,6 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:auth_token] = nil
-    redirect_to login_url, notice: "Logout com sucesso!"
+    redirect_to login_url, notice: "Sessão encerrada com sucesso!"
   end
 end

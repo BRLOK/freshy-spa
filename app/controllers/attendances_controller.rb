@@ -1,5 +1,5 @@
 class AttendancesController < ApplicationController
-  before_action :set_attendance, only: [:edit, :update]
+  before_action :set_attendance, only: [:edit, :update, :start, :stop]
 
   # GET /attendances
   def index
@@ -48,6 +48,40 @@ class AttendancesController < ApplicationController
     end
   rescue StandardError => e
     render :edit
+  end
+
+  def start
+    @attendance.start!
+  rescue => e
+    flash[:error] = e.message
+  ensure
+    redirect_to @attendance
+  end
+
+  def stop
+    @attendance.stop!
+  rescue => e
+    flash[:error] = e.message
+  ensure
+    redirect_to @attendance
+  end
+
+  def start_item
+    @attendance_item = AttendanceItem.find(params[:id])
+    @attendance_item.start!
+  rescue => e
+    flash[:error] = e.message
+  ensure
+    redirect_to @attendance_item.attendance
+  end
+
+  def stop_item
+    @attendance_item = AttendanceItem.find(params[:id])
+    @attendance_item.stop!
+  rescue => e
+    flash[:error] = e.message
+  ensure
+    redirect_to @attendance_item.attendance
   end
 
   private

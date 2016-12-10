@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
 
   def authorize_user
     if current_user.blank?
-      redirect_to login_url, notice: "Por favor faça o login"
+      redirect_to login_url, notice: "Por favor acesse o sistema"
     end
   end
 

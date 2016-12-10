@@ -56,6 +56,30 @@ module LinksHelper
     end
   end
 
+  def start_attendance_link(attendance_id)
+    link_to start_attendance_path(attendance_id), class: "btn btn-sm btn-success", method: :post do
+      "<span class='glyphicon glyphicon-play'></span>Iniciar atendimento".html_safe
+    end
+  end
+
+  def stop_attendance_link(attendance_id)
+    link_to stop_attendance_path(attendance_id), class: "btn btn-sm btn-primary", method: :post do
+      "<span class='glyphicon glyphicon-stop'></span>Encerrar atendimento".html_safe
+    end
+  end
+
+  def start_attendance_item_link(item_id)
+    link_to start_item_attendance_path(item_id), class: "btn btn-sm btn-success", method: :post do
+      "<span class='glyphicon glyphicon-play'></span>Iniciar tratamento".html_safe
+    end
+  end
+
+  def stop_attendance_item_link(item_id)
+    link_to stop_item_attendance_path(item_id), class: "btn btn-sm btn-primary", method: :post do
+      "<span class='glyphicon glyphicon-stop'></span>Encerrar tratamento".html_safe
+    end
+  end
+
   # Customer Links
   def show_customer_name_link(customer)
     link_to customer.name, customer

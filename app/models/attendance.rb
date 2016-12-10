@@ -28,8 +28,25 @@ class Attendance < ApplicationRecord
     self.scheduled_for.to_date
   end
 
-
   def set_default_status
     self.status ||= 'scheduled'
+  end
+
+  def start!
+    if self.status != "scheduled"
+      raise "Não é possível iniciar este atendimento"
+    else
+      self.status = "in_progress"
+      self.save!
+    end
+  end
+
+  def stop!
+    if self.status != "in_progress"
+      raise "Não é possível encerrar este atendimento"
+    else
+      self.status = "finished"
+      self.save!
+    end
   end
 end
