@@ -51,3 +51,6 @@ html
             - flash.each do |status, message|
               = content_tag :div, message, class: "alert #{class_for_alert(status)}"
           = yield
+
+    javascript:
+      yojs.call("components.initializeJqueryMasks");

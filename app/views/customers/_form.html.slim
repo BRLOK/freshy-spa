@@ -36,12 +36,12 @@
   .form-group
     = f.label :cpf, class: "col-sm-2 control-label"
     .col-sm-10
-      = f.text_field :cpf, class: "form-control", placeholder: "Apenas números"
+      = f.text_field :cpf, class: "form-control js-mask-cpf"
 
   .form-group
     = f.label :telephone, class: "col-sm-2 control-label"
     .col-sm-10
-      = f.text_field :telephone, class: "form-control", placeholder: "Apenas números"
+      = f.text_field :telephone, class: "form-control js-mask-phone-number"
 
   - if policy(customer).activate?
     .form-group
