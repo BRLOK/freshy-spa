@@ -4,7 +4,7 @@ SimpleForm.setup do |config|
   config.button_class = 'btn btn-default'
   config.boolean_label_class = nil
 
-  config.wrappers :inline_input, tag: 'div', class: 'form-group', error_class: 'has-error' do |b|
+  config.wrappers :inline_input, tag: 'div', class: 'form-group' do |b|
     b.use :html5
     b.use :placeholder
     b.optional :maxlength
@@ -16,9 +16,6 @@ SimpleForm.setup do |config|
     b.wrapper tag: "div", class: "col-sm-10" do |ba|
       ba.use :input, class: 'form-control'
     end
-
-    b.use :error, wrap_with: { tag: 'span', class: 'help-block' }
-    b.use :hint,  wrap_with: { tag: 'p', class: 'help-block' }
   end
 
   config.wrappers :vertical_form, tag: 'div', class: 'form-group', error_class: 'has-error' do |b|

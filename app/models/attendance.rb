@@ -11,7 +11,7 @@ class Attendance < ApplicationRecord
   validates :scheduled_for, presence: true
   validates :status, presence: true, inclusion: { in: VALID_STATUS }
 
-  before_create :set_default_status
+  before_validation :set_default_status
 
   scope :scheduled_for,         -> (date) { where(scheduled_for: date) }
   scope :scheduled_for_before,  -> (date) { where("scheduled_for >= ?", date) }

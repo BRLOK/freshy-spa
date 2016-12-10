@@ -1,5 +1,5 @@
 class AttendanceItem < ApplicationRecord
-  belongs_to :attendance
+  belongs_to :attendance, optional: true
   belongs_to :service
   belongs_to :collaborator, class_name: User, foreign_key: :user_id
 
