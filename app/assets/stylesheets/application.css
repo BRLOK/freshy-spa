@@ -12,10 +12,15 @@
  *
  *= require_tree .
  *= require_self
+ *= require simple_calendar
+ *= require dashboard
+ *= require components
+ *= require bootstrap-datepicker
+ *= require clockpicker
  */
 
 body {
-  padding-top: 70px;
+  padding-top: 60px;
 }
 
 .navbar-header .navbar-brand img {

@@ -30,7 +30,7 @@ Features:
   rails --version
   ```
   If the last command does not show the current version of rails, run the following command, wait until finish, and check version again:
-  
+
   ```sh
   gem install rails
   ```
@@ -40,12 +40,12 @@ Features:
   git config --global user.name "YOUR NAME FROM GITHUB ACCOUNT"
   git config --global user.email "YOUR EMAIL ADDRESS FROM GITHUB ACCOUNT"
   ```
-  
+
 ## APP Setup
 
 1. Using the command line prompt, change the current directory to the location where you want the cloned directory to be made.
 
-  Example: 
+  Example:
   ```sh
   cd projects
   ```
@@ -68,7 +68,7 @@ Features:
 5. Setup the database:
 
   ```sh
-  rake db:create db:migrate db:seed
+  rake db:setup
   ```
 6. Run rails server
 

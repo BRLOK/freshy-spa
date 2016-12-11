@@ -1,0 +1,37 @@
+.page-header
+  h1
+    = "Listando #{Attendance.model_name.human.pluralize}"
+.pull-right
+  - if policy(Attendance).create?
+    = new_attendance_link
+
+table.table.table-hover
+  thead
+    tr
+      th
+        = Attendance.human_attribute_name("customer")
+      th
+        = Attendance.human_attribute_name("scheduled_for")
+      th
+        = Attendance.human_attribute_name("status")
+      th
+        = Attendance.human_attribute_name("services")
+      th
+
+  tbody
+    - @attendances.each do |attendance|
+      tr
+        td = show_customer_name_link(attendance.customer)
+        td = attendance.scheduled_for
+        td = attendance.status
+        td = attendance.items_text
+        td
+          .btn-group
+            - if policy(attendance).show?
+              = show_attendance_link(attendance.id)
+            - if policy(attendance).update?
+              = edit_attendance_link(attendance.id)
+
+.pull-right
+  - if policy(Attendance).create?
+    = new_attendance_link

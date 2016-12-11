@@ -1,6 +1,15 @@
-.page-header
-  h1
-    | Bem vindo,&nbsp;
-    = current_user.name
+.pull-right
+  = today_link
 
-= I18n.l Date.current, format: :long
+- if current_user.collaborator?
+  = week_calendar events: @attendances do |date, attendances|
+    = date.day
+    br/
+    - attendances.each do |attendance|
+      = show_attendance_for_calendar(attendance)
+- else
+  = month_calendar events: @attendances do |date, attendances|
+    = date.day
+    br/
+    - attendances.each do |attendance|
+      = show_attendance_for_calendar(attendance)

@@ -3,6 +3,17 @@
 
 form.form-horizontal
   .form-group
+    .col-sm-12.text-right
+      .btn-group
+        = link_to services_path, class: "btn btn-sm btn-default" do
+          span.glyphicon.glyphicon-list-alt
+          | Lista
+        - if policy(@service).update?
+          = link_to edit_service_path(@service), class: "btn btn-sm btn-warning" do
+            span.glyphicon.glyphicon-pencil
+            | Editar
+
+  .form-group
     label.col-sm-2.control-label Nome
     .col-sm-10
       p.form-control-static
@@ -27,8 +38,8 @@ form.form-horizontal
     .col-sm-12.text-right
       .btn-group
         = link_to services_path, class: "btn btn-sm btn-default" do
-          span.glyphicon.glyphicon-menu-left
-          | Voltar
+          span.glyphicon.glyphicon-list-alt
+          | Lista
         - if policy(@service).update?
           = link_to edit_service_path(@service), class: "btn btn-sm btn-warning" do
             span.glyphicon.glyphicon-pencil

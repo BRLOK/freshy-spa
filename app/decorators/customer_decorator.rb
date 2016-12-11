@@ -11,7 +11,7 @@ class CustomerDecorator < Draper::Decorator
 
   def cpf
     if object.cpf.present?
-      object.cpf
+      object.cpf.insert(9, '-').insert(6, '.').insert(3, '.')
     else
       "-"
     end
