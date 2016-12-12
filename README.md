@@ -73,7 +73,9 @@ Features:
 6. Setup the database:
 
   ```sh
-  rake db:setup
+  rake db:create
+  rake db:migrate
+  rake db:seed
   ```
 7. Run rails server
 
