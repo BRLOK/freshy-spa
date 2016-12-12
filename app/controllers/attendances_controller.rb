@@ -1,5 +1,5 @@
 class AttendancesController < ApplicationController
-  before_action :set_attendance, only: [:edit, :update, :start, :stop]
+  before_action :set_attendance, only: [:edit, :update, :start, :stop, :cancel]
 
   # GET /attendances
   def index
@@ -60,6 +60,14 @@ class AttendancesController < ApplicationController
 
   def stop
     @attendance.stop!
+  rescue => e
+    flash[:error] = e.message
+  ensure
+    redirect_to @attendance
+  end
+
+  def cancel
+    @attendance.cancel!
   rescue => e
     flash[:error] = e.message
   ensure

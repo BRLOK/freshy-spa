@@ -58,25 +58,31 @@ module LinksHelper
 
   def start_attendance_link(attendance_id)
     link_to start_attendance_path(attendance_id), class: "btn btn-sm btn-success", method: :post do
-      "<span class='glyphicon glyphicon-play'></span>Iniciar atendimento".html_safe
+      "<span class='glyphicon glyphicon-play'></span>Iniciar".html_safe
     end
   end
 
   def stop_attendance_link(attendance_id)
     link_to stop_attendance_path(attendance_id), class: "btn btn-sm btn-primary", method: :post do
-      "<span class='glyphicon glyphicon-stop'></span>Encerrar atendimento".html_safe
+      "<span class='glyphicon glyphicon-stop'></span>Encerrar".html_safe
+    end
+  end
+
+  def cancel_attendance_link(attendance_id)
+    link_to cancel_attendance_path(attendance_id), class: "btn btn-sm btn-danger", method: :post do
+      "<span class='glyphicon glyphicon-remove'></span>Cancelar".html_safe
     end
   end
 
   def start_attendance_item_link(item_id)
     link_to start_item_attendance_path(item_id), class: "btn btn-sm btn-success", method: :post do
-      "<span class='glyphicon glyphicon-play'></span>Iniciar tratamento".html_safe
+      "<span class='glyphicon glyphicon-play'></span>Iniciar".html_safe
     end
   end
 
   def stop_attendance_item_link(item_id)
     link_to stop_item_attendance_path(item_id), class: "btn btn-sm btn-primary", method: :post do
-      "<span class='glyphicon glyphicon-stop'></span>Encerrar tratamento".html_safe
+      "<span class='glyphicon glyphicon-stop'></span>Encerrar".html_safe
     end
   end
 

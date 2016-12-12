@@ -6,7 +6,7 @@ class Attendance < ApplicationRecord
   accepts_nested_attributes_for :items
   accepts_date_time_params_for :scheduled_for
 
-  VALID_STATUS = ["scheduled", "in_progress", "finished", "expired"]
+  VALID_STATUS = ["scheduled", "in_progress", "finished", "canceled"]
 
   validates :scheduled_for, presence: true
   validates :status, presence: true, inclusion: { in: VALID_STATUS }
@@ -46,6 +46,15 @@ class Attendance < ApplicationRecord
       raise "Não é possível encerrar este atendimento"
     else
       self.status = "finished"
+      self.save!
+    end
+  end
+
+  def cancel!
+    if self.status != "scheduled"
+      raise "Não é possível cancelar este atendimento"
+    else
+      self.status = "canceled"
       self.save!
     end
   end

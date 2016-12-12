@@ -31,6 +31,10 @@ class AttendancePolicy < ApplicationPolicy
     true
   end
 
+  def cancel?
+    user.admin? || user.operator?
+  end
+
   def start_item?
     true
   end

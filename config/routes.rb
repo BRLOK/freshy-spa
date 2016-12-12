@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :attendances, except: :destroy, path: "atendimentos" do
       post "iniciar", as: "start", action: "start", on: :member
       post "encerrar", as: "stop", action: "stop", on: :member
+      post "cancelar", as: "cancel", action: "cancel", on: :member
       post "iniciar-tratamento", as: "start_item", action: "start_item", on: :member
       post "encerrar-tratamento", as: "stop_item", action: "stop_item", on: :member
     end

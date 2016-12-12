@@ -61,4 +61,4 @@ pt-BR:
         scheduled: Agendado
         in_progress: Em andamento
         finished: Terminado
-        expired: Expirado
+        canceled: Cancelado
