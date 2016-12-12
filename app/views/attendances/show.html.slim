@@ -20,7 +20,7 @@ form.form-horizontal
       = Attendance.human_attribute_name("customer")
     .col-sm-10
       p.form-control-static
-        = link_to @attendance.customer_name, @attendance.customer
+        = show_customer_name_link(@attendance.customer)
   .form-group
     label.col-sm-2.control-label
       = Attendance.human_attribute_name("scheduled_for")

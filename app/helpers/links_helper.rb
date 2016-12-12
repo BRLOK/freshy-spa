@@ -82,17 +82,29 @@ module LinksHelper
 
   # Customer Links
   def show_customer_name_link(customer)
-    link_to customer.name, customer
+    if policy(Customer).show?
+      link_to customer.name, customer
+    else
+      customer.name
+    end
   end
 
   # Service Links
   def show_service_name_link(service)
-    link_to service.name, service
+    if policy(Service).show?
+      link_to service.name, service
+    else
+      service.name
+    end
   end
 
   # User Links
   def show_user_name_link(user)
-    link_to user.name, user
+    if policy(User).show?
+      link_to user.name, user
+    else
+      user.name
+    end
   end
 
   # General Links

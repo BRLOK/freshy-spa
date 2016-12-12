@@ -4,7 +4,7 @@ class CustomerPolicy < ApplicationPolicy
   end
 
   def show?
-    true
+    user.admin? || user.operator?
   end
 
   def create?
