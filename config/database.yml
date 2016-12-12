@@ -29,16 +29,13 @@ development:
   database: freshyspa_development
   pool: 5
   timeout: 5000
-  password: 123456
 test:
   adapter: postgresql
   database: freshyspa_test
   pool: 5
   timeout: 5000
-  password: 123456
 production:
   adapter: postgresql
   database: freshyspa_production
   pool: 5
   timeout: 5000
-  password: 123456
