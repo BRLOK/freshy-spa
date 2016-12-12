@@ -60,24 +60,29 @@ Features:
   ```sh
   cd freshy-spa
   ```
-4. Install all the libraries:
+4. Install bundler:
+
+  ```sh
+  gem install bundler
+  ```
+5. Install all the libraries:
 
   ```sh
   bundle install
   ```
-5. Setup the database:
+6. Setup the database:
 
   ```sh
   rake db:setup
   ```
-6. Run rails server
+7. Run rails server
 
   ```sh
   rails s
   ```
-7. Open a browser and access http://localhost:3000/
+8. Open a browser and access http://localhost:3000/
 
-8. Have fun!
+9. Have fun!
 
 To shut down the server, simply `ctrl + c` on command line prompt
 
