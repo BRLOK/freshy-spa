@@ -94,19 +94,17 @@ collaborator = User.find_by_role("collaborator")
 Attendance.create([
   {
     customer_id: Customer.first.id,
-    scheduled_for: 2.days.from_now,
+    user_id: collaborator.id,
+    scheduled_for: 2.days.from_now.beginning_of_hour,
     status: "scheduled",
     items_attributes: [
       {
-        user_id: collaborator.id,
         service_id: collaborator.service_ids[0]
       },
       {
-        user_id: collaborator.id,
         service_id: collaborator.service_ids[1]
       },
       {
-        user_id: collaborator.id,
         service_id: collaborator.service_ids[2]
       }
     ]

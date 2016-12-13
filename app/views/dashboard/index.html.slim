@@ -1,15 +1,15 @@
 .pull-right
   = today_link
 
-- if current_user.collaborator?
-  = week_calendar events: @attendances do |date, attendances|
+= week_calendar events: @attendances do |date, attendances|
+  p.h3
     = date.day
-    br/
-    - attendances.each do |attendance|
-      = show_attendance_for_calendar(attendance)
-- else
-  = month_calendar events: @attendances do |date, attendances|
-    = date.day
-    br/
-    - attendances.each do |attendance|
-      = show_attendance_for_calendar(attendance)
+  table.intern
+    - (8..22).each do |hour|
+      tr
+        td.hour
+          = "#{hour}:00"
+        td.attendances
+          - attendances.select { |attendance| attendance.scheduled_for.to_datetime.hour == hour }.each do |attendance|
+            = show_attendance_for_calendar(attendance)
+            br/

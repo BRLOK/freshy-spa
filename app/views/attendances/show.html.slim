@@ -4,16 +4,20 @@
 
 form.form-horizontal
   .form-group
-    .col-sm-12.text-right
+    .col-sm-6
+      .btn-group
+        - if @attendance.scheduled?
+          = start_attendance_link(@attendance.id)
+        - if @attendance.in_progress?
+          = stop_attendance_link(@attendance.id)
+        - if @attendance.scheduled?
+          = cancel_attendance_link(@attendance.id)
+    .col-sm-6.text-right
       .btn-group
         = calendar_link
         = attendances_link
         - if policy(@attendance).update?
           = edit_attendance_link(@attendance.id)
-        - if @attendance.scheduled?
-          = start_attendance_link(@attendance.id)
-        - if @attendance.in_progress?
-          = stop_attendance_link(@attendance.id)
 
   .form-group
     label.col-sm-2.control-label
@@ -21,6 +25,12 @@ form.form-horizontal
     .col-sm-10
       p.form-control-static
         = show_customer_name_link(@attendance.customer)
+  .form-group
+    label.col-sm-2.control-label
+      = Attendance.human_attribute_name("collaborator")
+    .col-sm-10
+      p.form-control-static
+        = show_user_name_link(@attendance.collaborator)
   .form-group
     label.col-sm-2.control-label
       = Attendance.human_attribute_name("scheduled_for")
@@ -40,8 +50,6 @@ form.form-horizontal
         th
           = AttendanceItem.human_attribute_name("service")
         th
-          = AttendanceItem.human_attribute_name("collaborator")
-        th
           = AttendanceItem.human_attribute_name("started_at")
         th
           = AttendanceItem.human_attribute_name("finished_at")
@@ -52,9 +60,6 @@ form.form-horizontal
           td
             p.form-control-static
               = show_service_name_link(item.service)
-          td
-            p.form-control-static
-              = show_user_name_link(item.collaborator)
           td
             p.form-control-static
               = item.started_at
@@ -68,13 +73,17 @@ form.form-horizontal
               = stop_attendance_item_link(item.id)
 
   .form-group
-    .col-sm-12.text-right
+    .col-sm-6
+      .btn-group
+        - if @attendance.scheduled?
+          = start_attendance_link(@attendance.id)
+        - if @attendance.in_progress?
+          = stop_attendance_link(@attendance.id)
+        - if @attendance.scheduled?
+          = cancel_attendance_link(@attendance.id)
+    .col-sm-6.text-right
       .btn-group
         = calendar_link
         = attendances_link
         - if policy(@attendance).update?
           = edit_attendance_link(@attendance.id)
-        - if @attendance.scheduled?
-          = start_attendance_link(@attendance.id)
-        - if @attendance.in_progress?
-          = stop_attendance_link(@attendance.id)

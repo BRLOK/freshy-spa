@@ -12,7 +12,11 @@ module LinksHelper
 
   def show_attendance_for_calendar(decorated_attendance)
     link_to decorated_attendance, class: "btn btn-xs #{button_class_for_calendar(decorated_attendance.status)}" do
-      "#{decorated_attendance.customer_name} - #{decorated_attendance.scheduled_for_time}"
+      if current_user.collaborator?
+        "#{decorated_attendance.customer_first_name} às #{decorated_attendance.scheduled_for_time}"
+      else
+        "#{decorated_attendance.collaborator_abrv}<br/>#{decorated_attendance.customer_first_name} às #{decorated_attendance.scheduled_for_time}".html_safe
+      end
     end
   end
 
@@ -58,25 +62,31 @@ module LinksHelper
 
   def start_attendance_link(attendance_id)
     link_to start_attendance_path(attendance_id), class: "btn btn-sm btn-success", method: :post do
-      "<span class='glyphicon glyphicon-play'></span>Iniciar atendimento".html_safe
+      "<span class='glyphicon glyphicon-play'></span>Iniciar".html_safe
     end
   end
 
   def stop_attendance_link(attendance_id)
     link_to stop_attendance_path(attendance_id), class: "btn btn-sm btn-primary", method: :post do
-      "<span class='glyphicon glyphicon-stop'></span>Encerrar atendimento".html_safe
+      "<span class='glyphicon glyphicon-stop'></span>Encerrar".html_safe
+    end
+  end
+
+  def cancel_attendance_link(attendance_id)
+    link_to cancel_attendance_path(attendance_id), class: "btn btn-sm btn-danger", method: :post do
+      "<span class='glyphicon glyphicon-remove'></span>Cancelar".html_safe
     end
   end
 
   def start_attendance_item_link(item_id)
     link_to start_item_attendance_path(item_id), class: "btn btn-sm btn-success", method: :post do
-      "<span class='glyphicon glyphicon-play'></span>Iniciar tratamento".html_safe
+      "<span class='glyphicon glyphicon-play'></span>Iniciar".html_safe
     end
   end
 
   def stop_attendance_item_link(item_id)
     link_to stop_item_attendance_path(item_id), class: "btn btn-sm btn-primary", method: :post do
-      "<span class='glyphicon glyphicon-stop'></span>Encerrar tratamento".html_safe
+      "<span class='glyphicon glyphicon-stop'></span>Encerrar".html_safe
     end
   end
 

@@ -14,10 +14,6 @@ class AttendanceItemDecorator < Draper::Decorator
     end
   end
 
-  def collaborator_name
-    attendance_item.collaborator.name
-  end
-
   def service_name
     attendance_item.service.name
   end

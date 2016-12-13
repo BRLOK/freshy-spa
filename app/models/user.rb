@@ -3,6 +3,11 @@ class User < ApplicationRecord
   after_save :ensure_one_active, on: :update
 
   has_and_belongs_to_many :services
+  has_many :attendances do
+    def pending
+      where(status: ["scheduled", "in_progress"])
+    end
+  end
 
   VALID_ROLES = ["admin", "operator", "collaborator"]
 
