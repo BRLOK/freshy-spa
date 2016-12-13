@@ -11,6 +11,7 @@ class Attendance < ApplicationRecord
   validates :scheduled_for, presence: true
   validates :status, presence: true, inclusion: { in: VALID_STATUS }
   validate :collaborator_must_be_available
+  validate :collaborator_must_be_able_to_perform_service
 
   before_validation :set_default_status
   before_validation :set_duration
@@ -82,10 +83,22 @@ class Attendance < ApplicationRecord
   end
 
   def collaborator_must_be_available
-    self.collaborator.attendances.pending.each do |attendance|
+    self.collaborator.attendances.pending.where.not(id: self.id).each do |attendance|
       if self.scheduled_for.between?(attendance.scheduled_for, attendance.expected_finish_time)
         self.errors.add(:collaborator, "não está disponível")
         return false
+      end
+    end
+    return true
+  end
+
+  def collaborator_must_be_able_to_perform_service
+    if self.items.present?
+      self.items.each do |item|
+        if !item.service.user_ids.include?(self.user_id)
+          self.errors.add(:base, "Algum tratamento não pode ser executado por colaborador")
+          return false
+        end
       end
     end
     return true
