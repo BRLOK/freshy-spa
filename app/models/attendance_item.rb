@@ -1,5 +1,5 @@
 class AttendanceItem < ApplicationRecord
-  belongs_to :attendance
+  belongs_to :attendance, optional: true
   belongs_to :service
 
   validate :finished_at_must_be_after_started_at
