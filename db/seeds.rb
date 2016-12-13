@@ -95,7 +95,7 @@ Attendance.create([
   {
     customer_id: Customer.first.id,
     user_id: collaborator.id,
-    scheduled_for: 2.days.from_now.beginning_of_hour,
+    scheduled_for: 2.days.from_now.beginning_of_day + 10.hours,
     status: "scheduled",
     items_attributes: [
       {
