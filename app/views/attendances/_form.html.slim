@@ -23,6 +23,11 @@
       .col-sm-10
         = f.select :customer_id, Customer.active.map{ |customer| [customer.name, customer.id] }, {}, class: "form-control"
 
+  .form-group
+    = f.label :collaborator, class: "col-sm-2 control-label"
+    .col-sm-10
+      = f.select :user_id, User.active.collaborators.map{ |user| [user.name, user.id] }, {}, class: "form-control"
+
   = f.input :scheduled_for, as: :date_time_picker, wrapper: :inline_input, input_html: {\
     data: { date_start_date: I18n.l(Date.today), date_end_date: I18n.l(1.year.from_now.to_date) } }
 

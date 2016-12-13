@@ -73,7 +73,7 @@ Features:
 6. Setup the database:
 
   ```sh
-  rake db:create
+  rake db:create 'db/development.sqlite3'
   rake db:migrate
   rake db:seed
   ```

@@ -1,22 +1,24 @@
 class Attendance < ApplicationRecord
   belongs_to :customer
+  belongs_to :collaborator, class_name: User, foreign_key: :user_id
   has_many :items, class_name: AttendanceItem
-  has_many :services, through: :attendance_items
-  has_many :collaborators, through: :attendance_items, class_name: User
-  accepts_nested_attributes_for :items
+  has_many :services, through: :items
+  accepts_nested_attributes_for :items, reject_if: :all_blank, allow_destroy: true
   accepts_date_time_params_for :scheduled_for
 
   VALID_STATUS = ["scheduled", "in_progress", "finished", "canceled"]
 
   validates :scheduled_for, presence: true
   validates :status, presence: true, inclusion: { in: VALID_STATUS }
+  validate :collaborator_must_be_available
 
   before_validation :set_default_status
+  before_validation :set_duration
 
   scope :scheduled_for,         -> (date) { where(scheduled_for: date) }
   scope :scheduled_for_before,  -> (date) { where("scheduled_for >= ?", date) }
   scope :scheduled_for_after,   -> (date) { where("scheduled_for <= ?", date) }
-  scope :by_collaborator,       -> (collaborator) { joins(:items).merge(AttendanceItem.by_collaborator(collaborator)).uniq }
+  scope :by_collaborator,       -> (collaborator) { where(user_id: collaborator.id) }
 
   VALID_STATUS.each do |some_status|
     define_method "#{some_status}?" do
@@ -28,8 +30,12 @@ class Attendance < ApplicationRecord
     self.scheduled_for.to_date
   end
 
-  def set_default_status
-    self.status ||= 'scheduled'
+  def end_time
+    if self.duration.present?
+      self.scheduled_for + self.duration * 60
+    else
+      self.scheduled_for
+    end
   end
 
   def start!
@@ -57,5 +63,34 @@ class Attendance < ApplicationRecord
       self.status = "canceled"
       self.save!
     end
+  end
+
+  private
+
+  def set_default_status
+    self.status ||= 'scheduled'
+  end
+
+  def set_duration
+    if self.items.present?
+      total_duration = 0
+      self.items.each do |item|
+        total_duration += item.service.duration
+      end
+      self.duration = total_duration
+    end
+  end
+
+  def collaborator_must_be_available
+    collaborator_attendances = self.collaborator.attendances.pending
+    collaborator_attendances.each do |attendance|
+      puts "range: #{attendance.scheduled_for..attendance.end_time}"
+      puts "scheduled_for: #{self.scheduled_for}"
+      if (attendance.scheduled_for..attendance.end_time).cover? self.scheduled_for
+        self.errors.add(:collaborator, "não está disponível")
+        return false
+      end
+    end
+    return true
   end
 end

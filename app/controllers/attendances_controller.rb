@@ -101,8 +101,8 @@ class AttendancesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def attendance_params
-    params.require(:attendance).permit(:customer_id, :status,
+    params.require(:attendance).permit(:customer_id, :user_id, :status,
       scheduled_for: [:date, :time],
-      items_attributes: [:id, :service_id, :user_id, :started_at, :finished_at, :_destroy])
+      items_attributes: [:id, :service_id, :started_at, :finished_at, :_destroy])
   end
 end

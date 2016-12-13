@@ -10,17 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161207204921) do
+ActiveRecord::Schema.define(version: 20161212235452) do
 
   create_table "attendance_items", force: :cascade do |t|
     t.integer  "attendance_id"
     t.integer  "service_id"
-    t.integer  "user_id"
     t.datetime "started_at"
     t.datetime "finished_at"
     t.index ["attendance_id"], name: "index_attendance_items_on_attendance_id"
     t.index ["service_id"], name: "index_attendance_items_on_service_id"
-    t.index ["user_id"], name: "index_attendance_items_on_user_id"
   end
 
   create_table "attendances", force: :cascade do |t|
@@ -29,6 +27,8 @@ ActiveRecord::Schema.define(version: 20161207204921) do
     t.string   "status"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.integer  "user_id"
+    t.integer  "duration"
     t.index ["customer_id"], name: "index_attendances_on_customer_id"
   end
 

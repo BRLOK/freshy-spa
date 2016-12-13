@@ -19,10 +19,6 @@ class AttendanceDecorator < Draper::Decorator
   end
 
   def items_text
-    text = ""
-    attendance.items.each do |item|
-      text += "#{item.service.name} - #{item.collaborator.name}<br/>"
-    end
-    text.html_safe
+    attendance.services.pluck(:name).join(', ')
   end
 end

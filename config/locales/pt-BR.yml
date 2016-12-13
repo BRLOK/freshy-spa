@@ -16,10 +16,11 @@ pt-BR:
         status: Status
         customer: Cliente
         customer_id: Cliente
+        collaborator: Colaborador
+        collaborator_id: Colaborador
         services: Tratamentos
       attendance/items:
         attendance: Atendimento
-        collaborator: Colaborador
         user_id: Colaborador
         service: Tratamento
         service_id: Tratamento

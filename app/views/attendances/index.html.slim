@@ -11,6 +11,8 @@ table.table.table-hover
       th
         = Attendance.human_attribute_name("customer")
       th
+        = Attendance.human_attribute_name("collaborator")
+      th
         = Attendance.human_attribute_name("scheduled_for")
       th
         = Attendance.human_attribute_name("status")
@@ -22,6 +24,7 @@ table.table.table-hover
     - @attendances.each do |attendance|
       tr
         td = show_customer_name_link(attendance.customer)
+        td = show_user_name_link(attendance.collaborator)
         td = attendance.scheduled_for
         td = attendance.status
         td = attendance.items_text
