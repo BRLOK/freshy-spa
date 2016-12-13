@@ -12,6 +12,7 @@ class Attendance < ApplicationRecord
   validates :status, presence: true, inclusion: { in: VALID_STATUS }
   validate :collaborator_must_be_available
   validate :collaborator_must_be_able_to_perform_service
+  validate :scheduled_for_business_hours
 
   before_validation :set_default_status
   before_validation :set_duration
@@ -102,5 +103,11 @@ class Attendance < ApplicationRecord
       end
     end
     return true
+  end
+
+  def scheduled_for_business_hours
+    if scheduled_for < (scheduled_for.beginning_of_day + 8.hours) || scheduled_for > (scheduled_for.end_of_day + 22.hours)
+      self.errors.add(:scheduled_for, "está fora do expediente")
+    end
   end
 end
