@@ -63,3 +63,6 @@ pt-BR:
         in_progress: Em andamento
         finished: Terminado
         canceled: Cancelado
+  date:
+    formats:
+      xshort: "%d/%m"

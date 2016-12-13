@@ -12,7 +12,11 @@ module LinksHelper
 
   def show_attendance_for_calendar(decorated_attendance)
     link_to decorated_attendance, class: "btn btn-xs #{button_class_for_calendar(decorated_attendance.status)}" do
-      "#{decorated_attendance.customer_name} - #{decorated_attendance.scheduled_for_time}"
+      if current_user.collaborator?
+        "#{decorated_attendance.customer_first_name} às #{decorated_attendance.scheduled_for_time}"
+      else
+        "#{decorated_attendance.collaborator_abrv}<br/>#{decorated_attendance.customer_first_name} às #{decorated_attendance.scheduled_for_time}".html_safe
+      end
     end
   end
 

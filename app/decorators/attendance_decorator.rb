@@ -18,6 +18,26 @@ class AttendanceDecorator < Draper::Decorator
     attendance.customer.name
   end
 
+  def customer_first_name
+    attendance.customer.name.split(" ").first
+  end
+
+  def collaborator_name
+    attendance.collaborator.name
+  end
+
+  def collaborator_abrv
+    names = attendance.collaborator.name.split(" ")
+    first_name = names.shift
+
+    [
+      first_name,
+      names.map{ |str|
+        str.first + "." unless ["e", "da", "de", "dos"].include?(str.downcase)
+      }
+    ].flatten.join(" ")
+  end
+
   def items_text
     attendance.services.pluck(:name).join(', ')
   end

@@ -30,7 +30,7 @@ class Attendance < ApplicationRecord
     self.scheduled_for.to_date
   end
 
-  def end_time
+  def expected_finish_time
     if self.duration.present?
       self.scheduled_for + self.duration * 60
     else
@@ -82,11 +82,8 @@ class Attendance < ApplicationRecord
   end
 
   def collaborator_must_be_available
-    collaborator_attendances = self.collaborator.attendances.pending
-    collaborator_attendances.each do |attendance|
-      puts "range: #{attendance.scheduled_for..attendance.end_time}"
-      puts "scheduled_for: #{self.scheduled_for}"
-      if (attendance.scheduled_for..attendance.end_time).cover? self.scheduled_for
+    self.collaborator.attendances.pending.each do |attendance|
+      if self.scheduled_for.between?(attendance.scheduled_for, attendance.expected_finish_time)
         self.errors.add(:collaborator, "não está disponível")
         return false
       end
