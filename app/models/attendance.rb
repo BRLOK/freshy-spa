@@ -10,6 +10,7 @@ class Attendance < ApplicationRecord
 
   validates :scheduled_for, presence: true
   validates :status, presence: true, inclusion: { in: VALID_STATUS }
+  validate :customer_must_be_available
   validate :collaborator_must_be_available
   validate :collaborator_must_be_able_to_perform_service
   validate :scheduled_for_business_hours
@@ -21,6 +22,7 @@ class Attendance < ApplicationRecord
   scope :scheduled_for_before,  -> (date) { where("scheduled_for >= ?", date) }
   scope :scheduled_for_after,   -> (date) { where("scheduled_for <= ?", date) }
   scope :by_collaborator,       -> (collaborator) { where(user_id: collaborator.id) }
+  scope :pending,               -> { where(status: ["scheduled", "in_progress"]) }
 
   VALID_STATUS.each do |some_status|
     define_method "#{some_status}?" do
@@ -81,6 +83,16 @@ class Attendance < ApplicationRecord
       end
       self.duration = total_duration
     end
+  end
+
+  def customer_must_be_available
+    self.customer.attendances.pending.where.not(id: self.id).each do |attendance|
+      if self.scheduled_for.between?(attendance.scheduled_for, attendance.expected_finish_time)
+        self.errors.add(:customer, "já possui atendimento neste horário")
+        return false
+      end
+    end
+    return true
   end
 
   def collaborator_must_be_available
