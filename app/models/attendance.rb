@@ -110,7 +110,7 @@ class Attendance < ApplicationRecord
     if self.items.present?
       self.items.each do |item|
         if !item.service.user_ids.include?(self.user_id)
-          self.errors.add(:base, "Algum tratamento não pode ser executado por colaborador")
+          self.errors.add(:base, "#{item.service.name} não pode ser executado pelo colaborador")
           return false
         end
       end
