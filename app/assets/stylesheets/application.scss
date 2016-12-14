@@ -1,0 +1,32 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "simple_calendar";
+@import "dashboard";
+@import "components";
+@import "bootstrap-sprockets";
+@import "bootstrap-datepicker";
+@import "jquery.timepicker";
+@import "chosen";
+@import "bootstrap-chosen";
+
+body {
+  padding-top: 60px;
+}
+
+.navbar-header .navbar-brand img {
+  display: inline-block;
+  max-width: 20px;
+  max-height: 20px;
+}
+
+.margin-left {
+  margin-left: 5px;
+}
+
+.margin-right {
+  margin-right: 5px;
+}
+
+.btn .glyphicon {
+  margin-right: 5px;
+}

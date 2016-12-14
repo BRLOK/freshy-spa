@@ -23,6 +23,7 @@ class Attendance < ApplicationRecord
   scope :scheduled_for_after,   -> (date) { where("scheduled_for <= ?", date) }
   scope :by_collaborator,       -> (collaborator) { where(user_id: collaborator.id) }
   scope :pending,               -> { where(status: ["scheduled", "in_progress"]) }
+  scope :except_canceled,       -> { where.not(status: "canceled") }
 
   VALID_STATUS.each do |some_status|
     define_method "#{some_status}?" do
@@ -36,9 +37,9 @@ class Attendance < ApplicationRecord
 
   def expected_finish_time
     if self.duration.present?
-      self.scheduled_for + self.duration * 60
+      self.scheduled_for + self.duration * 60 - 60
     else
-      self.scheduled_for
+      self.scheduled_for + 60
     end
   end
 

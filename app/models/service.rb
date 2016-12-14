@@ -7,5 +7,6 @@ class Service < ApplicationRecord
   validates :name, presence: true, uniqueness: true
   validates :duration, presence: true, numericality: { only_integer: true }, inclusion: { in: VALID_DURATIONS }
 
-  scope :active, -> { where(active: true) }
+  scope :active,      -> { where(active: true) }
+  scope :by_user_id,  -> (user_id) { joins(:users).where("users.id = ?", user_id).uniq }
 end

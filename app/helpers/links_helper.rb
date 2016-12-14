@@ -28,7 +28,7 @@ module LinksHelper
       "btn-success"
     when "Terminado"
       "btn-info"
-    when "Expirado"
+    when "Cancelado"
       "btn-danger"
     else
       "btn-default"

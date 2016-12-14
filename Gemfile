@@ -34,7 +34,9 @@ gem 'validates_cpf_cnpj'
 gem "simple_calendar", "~> 2.0"
 gem 'simple_form'
 gem "cocoon"
-gem 'byebug'
+gem 'chosen-rails'
+gem 'bootstrap-chosen-rails'
+gem 'bootstrap-sass', '~> 3.3.6'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -42,6 +44,7 @@ gem 'byebug'
 group :development, :test do
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
+  gem 'byebug'
 end
 
 group :development do

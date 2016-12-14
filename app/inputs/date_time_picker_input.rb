@@ -6,7 +6,7 @@ class DateTimePickerInput < SimpleForm::Inputs::DateTimeInput
   def input(wrapper_options)
     template.content_tag(:div) do
       template.concat div_datepicker
-      template.concat div_clockpicker
+      template.concat div_timepicker
     end
   end
 
@@ -19,10 +19,10 @@ class DateTimePickerInput < SimpleForm::Inputs::DateTimeInput
     end
   end
 
-  def div_clockpicker
-    template.content_tag(:div, clockpicker_options) do
-      template.concat @builder.text_field(attribute_name, input_html_time_options)
+  def div_timepicker
+    template.content_tag(:div, timepicker_options) do
       template.concat span_clock
+      template.concat @builder.text_field(attribute_name, input_html_time_options)
     end
   end
 
@@ -33,9 +33,9 @@ class DateTimePickerInput < SimpleForm::Inputs::DateTimeInput
     }
   end
 
-  def clockpicker_options
+  def timepicker_options
     {
-      class: 'input-group time clockpicker col-xs-5',
+      class: 'input-group time col-xs-5',
       data: input_html_options[:data]
     }
   end
@@ -55,7 +55,7 @@ class DateTimePickerInput < SimpleForm::Inputs::DateTimeInput
     custom_options = {
       id: time_input_id,
       name: time_input_name,
-      class: 'form-control',
+      class: 'form-control timepicker',
       readonly: true
     }
     custom_options[:value] = time_value if time_value.present?

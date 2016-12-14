@@ -13,6 +13,7 @@
 //= require jquery
 //= require yojs
 //= require jquery_ujs
+//= require bootstrap
 //= require turbolinks
 //= require cocoon
 //= require ./freshy_spa/freshy_spa
@@ -20,5 +21,6 @@
 //= require ./freshy_spa/components/datetime_input
 //= require bootstrap-datepicker
 //= require bootstrap-datepicker.pt-BR
-//= require clockpicker
+//= require jquery.timepicker
+//= require chosen-jquery
 //= require_tree .
