@@ -1,5 +1,13 @@
 class CustomerDecorator < Draper::Decorator
+  class PaginatingDecorator < Draper::CollectionDecorator
+    delegate :current_page, :per_page, :offset, :total_entries, :total_pages
+  end
+  delegate :current_page, :per_page, :offset, :total_entries, :total_pages
   delegate_all
+
+  def self.collection_decorator_class
+    PaginatingDecorator
+  end
 
   def email
     if object.email.present?

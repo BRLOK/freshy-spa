@@ -1,6 +1,13 @@
 class AttendanceDecorator < Draper::Decorator
+  class PaginatingDecorator < Draper::CollectionDecorator
+    delegate :current_page, :per_page, :offset, :total_entries, :total_pages
+  end
   delegate_all
   decorates :attendance
+
+  def self.collection_decorator_class
+    PaginatingDecorator
+  end
 
   def status
     I18n.t "enums.attendance.status.#{attendance.status}"

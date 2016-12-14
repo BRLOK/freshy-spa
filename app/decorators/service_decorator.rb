@@ -1,5 +1,12 @@
 class ServiceDecorator < Draper::Decorator
+  class PaginatingDecorator < Draper::CollectionDecorator
+    delegate :current_page, :per_page, :offset, :total_entries, :total_pages
+  end
   delegate_all
+
+  def self.collection_decorator_class
+    PaginatingDecorator
+  end
 
   def description
     if object.description.present?

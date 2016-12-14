@@ -3,7 +3,7 @@ class ServicesController < ApplicationController
 
   # GET /services
   def index
-    @services = policy_scope(Service.order(:name)).decorate
+    @services = ServiceDecorator.decorate_collection(policy_scope(Service.order(:name)).paginate(page: params[:page]))
   end
 
   # GET /services/1

@@ -1,6 +1,8 @@
 .page-header
   h1
     = "Listando #{Attendance.model_name.human.pluralize}"
+
+= will_paginate @attendances, renderer: BootstrapPagination::Rails
 .pull-right
   - if policy(Attendance).create?
     = new_attendance_link
@@ -35,6 +37,7 @@ table.table.table-hover
             - if policy(attendance).update?
               = edit_attendance_link(attendance.id)
 
+= will_paginate @attendances, renderer: BootstrapPagination::Rails
 .pull-right
   - if policy(Attendance).create?
     = new_attendance_link

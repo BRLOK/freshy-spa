@@ -1,5 +1,7 @@
 .page-header
   h1 Listando tratamentos
+
+= will_paginate @services, renderer: BootstrapPagination::Rails
 .pull-right
   - if policy(Service).create?
     = link_to new_service_path, class: "btn btn-sm btn-success" do
@@ -33,6 +35,7 @@ table.table.table-hover
                 span.glyphicon.glyphicon-pencil
                 | Editar
 
+= will_paginate @services, renderer: BootstrapPagination::Rails
 .pull-right
   - if policy(Service).create?
     = link_to new_service_path, class: "btn btn-sm btn-success" do

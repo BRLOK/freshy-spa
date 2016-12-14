@@ -3,7 +3,7 @@ class CustomersController < ApplicationController
 
   # GET /customers
   def index
-    @customers = policy_scope(Customer.order(:name)).decorate
+    @customers = CustomerDecorator.decorate_collection(policy_scope(Customer.order(:name)).paginate(page: params[:page]))
   end
 
   # GET /customers/1

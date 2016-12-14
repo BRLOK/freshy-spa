@@ -3,7 +3,7 @@ class AttendancesController < ApplicationController
 
   # GET /attendances
   def index
-    @attendances = policy_scope(Attendance.order(scheduled_for: :desc)).decorate
+    @attendances = AttendanceDecorator.decorate_collection(policy_scope(Attendance.order(scheduled_for: :desc)).paginate(page: params[:page]))
   end
 
   # GET /attendances/1

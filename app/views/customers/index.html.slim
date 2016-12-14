@@ -1,5 +1,7 @@
 .page-header
   h1 Listando clientes
+
+= will_paginate @customers, renderer: BootstrapPagination::Rails
 .pull-right
   - if policy(Customer).create?
     = link_to new_customer_path, class: "btn btn-sm btn-success" do
@@ -35,6 +37,7 @@ table.table.table-hover
                 span.glyphicon.glyphicon-pencil
                 | Editar
 
+= will_paginate @customers, renderer: BootstrapPagination::Rails
 .pull-right
   - if policy(Customer).create?
     = link_to new_customer_path, class: "btn btn-sm btn-success" do
