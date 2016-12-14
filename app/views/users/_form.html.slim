@@ -10,7 +10,7 @@
               = message
 
   .form-group
-    .col-sm-12.text-right
+    .col-md-12.text-right
       .btn-group
         = link_to users_path, class: "btn btn-sm btn-default" do
           span.glyphicon.glyphicon-list-alt
@@ -24,48 +24,48 @@
             | Ver
 
   .form-group
-    = f.label :name, class: "col-sm-2 control-label"
-    .col-sm-10
+    = f.label :name, class: "col-md-2 control-label"
+    .col-md-10
       = f.text_field :name, class: "form-control"
 
   .form-group
-    = f.label :email, class: "col-sm-2 control-label"
-    .col-sm-10
+    = f.label :email, class: "col-md-2 control-label"
+    .col-md-10
       = f.text_field :email, class: "form-control"
 
   - if policy(user).change_password?
     .form-group
-      = f.label :password, class: "col-sm-2 control-label"
-      .col-sm-10
+      = f.label :password, class: "col-md-2 control-label"
+      .col-md-10
         = f.password_field :password, class: "form-control"
 
     .form-group
-      = f.label :password_confirmation, class: "col-sm-2 control-label"
-      .col-sm-10
+      = f.label :password_confirmation, class: "col-md-2 control-label"
+      .col-md-10
         = f.password_field :password_confirmation, class: "form-control"
 
   - if policy(user).change_role?
     .form-group
-      = f.label :role, class: "col-sm-2 control-label"
-      .col-sm-10
+      = f.label :role, class: "col-md-2 control-label"
+      .col-md-10
         = f.select :role, User::VALID_ROLES.map{ |role| [I18n.t("enums.user.role.#{role}"), role] }, {}, class: "form-control"
 
   .form-group
-    = f.label :services, class: "col-sm-2 control-label"
-    .col-sm-10
+    = f.label :services, class: "col-md-2 control-label"
+    .col-md-10
       = f.collection_check_boxes(:service_ids, Service.active, :id, :name) do |b|
         = b.label(class: "checkbox-inline"){ b.check_box + b.text }
 
   - if policy(user).activate?
     .form-group
-      .col-sm-offset-2.col-sm-10
+      .col-md-offset-2.col-md-10
         .checkbox
           = f.label :active do
             = f.check_box :active
             | Ativo?
 
   .form-group
-    .col-sm-12.text-right
+    .col-md-12.text-right
       .btn-group
         = link_to users_path, class: "btn btn-sm btn-default" do
           span.glyphicon.glyphicon-list-alt

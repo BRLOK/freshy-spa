@@ -10,7 +10,7 @@
               = message
 
   .form-group
-    .col-sm-12.text-right
+    .col-md-12.text-right
       .btn-group
         = link_to customers_path, class: "btn btn-sm btn-default" do
           span.glyphicon.glyphicon-list-alt
@@ -24,35 +24,35 @@
             | Ver
 
   .form-group
-    = f.label :name, class: "col-sm-2 control-label"
-    .col-sm-10
+    = f.label :name, class: "col-md-2 control-label"
+    .col-md-10
       = f.text_field :name, class: "form-control"
 
   .form-group
-    = f.label :email, class: "col-sm-2 control-label"
-    .col-sm-10
+    = f.label :email, class: "col-md-2 control-label"
+    .col-md-10
       = f.text_field :email, class: "form-control"
 
   .form-group
-    = f.label :cpf, class: "col-sm-2 control-label"
-    .col-sm-10
+    = f.label :cpf, class: "col-md-2 control-label"
+    .col-md-10
       = f.text_field :cpf, class: "form-control js-mask-cpf"
 
   .form-group
-    = f.label :telephone, class: "col-sm-2 control-label"
-    .col-sm-10
+    = f.label :telephone, class: "col-md-2 control-label"
+    .col-md-10
       = f.text_field :telephone, class: "form-control js-mask-phone-number"
 
   - if policy(customer).activate?
     .form-group
-      .col-sm-offset-2.col-sm-10
+      .col-md-offset-2.col-md-10
         .checkbox
           = f.label :active do
             = f.check_box :active
             | Ativo?
 
   .form-group
-    .col-sm-12.text-right
+    .col-md-12.text-right
       .btn-group
         = link_to customers_path, class: "btn btn-sm btn-default" do
           span.glyphicon.glyphicon-list-alt

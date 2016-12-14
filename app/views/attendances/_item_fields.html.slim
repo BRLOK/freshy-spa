@@ -1,10 +1,10 @@
-.nested-fields.col-sm-12
+.nested-fields.col-md-12
   .form-group
-    = f.label :service, class: "col-sm-2 control-label"
-    .col-sm-8
+    = f.label :service, class: "col-md-2 col-sm-2 col-xs-12 control-label"
+    .col-sm-8.col-xs-10
       = f.select :service_id, Service.active.map{ |service| [service.name, service.id] },
-        { include_blank: "Escolha um tratamento" }, class: "form-control"
-    .col-sm-2.text-right
+        { include_blank: "Escolha um tratamento" }, class: "form-control chosen-select"
+    .col-sm-2.col-xs-2.text-right
       = link_to_remove_association f, class: "btn btn-sm btn-danger" do
         span.glyphicon.glyphicon-minus
         | Remover

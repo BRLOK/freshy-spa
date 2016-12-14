@@ -24,15 +24,15 @@ html
               fieldset
                 legend Acesso ao sistema - Freshy Spa
                 .form-group
-                  = label_tag :email, "E-mail", class: "col-sm-2 control-label"
-                  .col-sm-10
+                  = label_tag :email, "E-mail", class: "col-md-2 control-label"
+                  .col-md-10
                     = text_field_tag :email, params[:email], class: "form-control"
                 .form-group
-                  = label_tag :password, "Senha", class: "col-sm-2 control-label"
-                  .col-sm-10
+                  = label_tag :password, "Senha", class: "col-md-2 control-label"
+                  .col-md-10
                     = password_field_tag :password, params[:password], class: "form-control"
                 .form-group
-                  .col-sm-offset-2.col-sm-10
+                  .col-md-offset-2.col-md-10
                     = button_tag type: "submit", class: "btn btn-sm btn-success" do
                       span.glyphicon.glyphicon-log-in
                       | Acessar

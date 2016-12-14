@@ -10,7 +10,7 @@
               = message
 
   .form-group
-    .col-sm-12.text-right
+    .col-md-12.text-right
       .btn-group
         = attendances_link
         = submit_link
@@ -19,13 +19,13 @@
 
   - if ["new", "create"].include?(params[:action]) || policy(attendance).change_customer?
     .form-group
-      = f.label :customer, class: "col-sm-2 control-label"
-      .col-sm-10
+      = f.label :customer, class: "col-md-2 control-label"
+      .col-md-10
         = f.select :customer_id, Customer.active.map{ |customer| [customer.name, customer.id] }, {}, class: "form-control"
 
   .form-group
-    = f.label :collaborator, class: "col-sm-2 control-label"
-    .col-sm-10
+    = f.label :collaborator, class: "col-md-2 control-label"
+    .col-md-10
       = f.select :user_id, User.active.collaborators.map{ |user| [user.name, user.id] }, {}, class: "form-control"
 
   = f.input :scheduled_for, as: :date_time_picker, wrapper: :inline_input, input_html: {\
@@ -33,8 +33,8 @@
 
   - if policy(attendance).change_status?
     .form-group
-      = f.label :status, class: "col-sm-2 control-label"
-      .col-sm-10
+      = f.label :status, class: "col-md-2 control-label"
+      .col-md-10
         = f.select :status, Attendance::VALID_STATUS.map{ |status| [I18n.t("enums.attendance.status.#{status}"), status] }, {}, class: "form-control"
 
   #items
@@ -42,15 +42,22 @@
       .row
         = render 'item_fields', f: item
     .form-group
-      .col-sm-12.text-right
-        = link_to_add_association f, :items, class: "btn btn-sm btn-success" do
+      .col-md-12.text-right
+        = link_to_add_association f, :items, class: "btn btn-sm btn-success js-btn-add-item" do
           span.glyphicon.glyphicon-plus
           = "Adicionar #{AttendanceItem.model_name.human}"
 
   .form-group
-    .col-sm-12.text-right
+    .col-md-12.text-right
       .btn-group
         = attendances_link
         = submit_link
         - if ["edit", "update"].include?(params[:action]) && policy(attendance).show?
           = show_attendance_link(attendance.id)
+
+javascript:
+  $(".js-btn-add-item").on("click", function(){
+    setTimeout(function(){
+      yojs.call("components.initializeChosen");
+    }, 5)
+  });

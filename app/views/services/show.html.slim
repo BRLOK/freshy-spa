@@ -3,7 +3,7 @@
 
 form.form-horizontal
   .form-group
-    .col-sm-12.text-right
+    .col-md-12.text-right
       .btn-group
         = link_to services_path, class: "btn btn-sm btn-default" do
           span.glyphicon.glyphicon-list-alt
@@ -14,28 +14,28 @@ form.form-horizontal
             | Editar
 
   .form-group
-    label.col-sm-2.control-label Nome
-    .col-sm-10
+    label.col-md-2.control-label Nome
+    .col-md-10
       p.form-control-static
         = @service.name
   .form-group
-    label.col-sm-2.control-label Descrição
-    .col-sm-10
+    label.col-md-2.control-label Descrição
+    .col-md-10
       p.form-control-static.text-justify
         = @service.description
   .form-group
-    label.col-sm-2.control-label Duração (minutos)
-    .col-sm-10
+    label.col-md-2.control-label Duração (minutos)
+    .col-md-10
       p.form-control-static
         = @service.duration
   .form-group
-    label.col-sm-2.control-label Ativo?
-    .col-sm-10
+    label.col-md-2.control-label Ativo?
+    .col-md-10
       p.form-control-static
         = @service.active
 
   .form-group
-    .col-sm-12.text-right
+    .col-md-12.text-right
       .btn-group
         = link_to services_path, class: "btn btn-sm btn-default" do
           span.glyphicon.glyphicon-list-alt
