@@ -17,4 +17,8 @@ class AttendanceItemDecorator < Draper::Decorator
   def service_name
     attendance_item.service.name
   end
+
+  def duration
+    "#{attendance_item.service.duration} minutos"
+  end
 end

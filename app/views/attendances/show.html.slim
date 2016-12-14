@@ -50,6 +50,8 @@ form.form-horizontal
         th
           = AttendanceItem.human_attribute_name("service")
         th
+          = AttendanceItem.human_attribute_name("duration")
+        th
           = AttendanceItem.human_attribute_name("started_at")
         th
           = AttendanceItem.human_attribute_name("finished_at")
@@ -60,6 +62,9 @@ form.form-horizontal
           td
             p.form-control-static
               = show_service_name_link(item.service)
+          td
+            p.form-control-static
+              = item.duration
           td
             p.form-control-static
               = item.started_at

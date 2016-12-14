@@ -24,12 +24,14 @@ pt-BR:
         user_id: Colaborador
         service: Tratamento
         service_id: Tratamento
+        duration: Duração estimada
         started_at: Horário de inicio
         finished_at: Horário de termino
       attendance_item:
         attendance: Atendimento
         collaborator: Colaborador
         service: Tratamento
+        duration: Duração estimada
         started_at: Horário de inicio
         finished_at: Horário de termino
       customer:
