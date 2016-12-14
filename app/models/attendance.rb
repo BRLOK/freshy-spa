@@ -37,9 +37,9 @@ class Attendance < ApplicationRecord
 
   def expected_finish_time
     if self.duration.present?
-      self.scheduled_for + self.duration * 60
+      self.scheduled_for + self.duration * 60 - 60
     else
-      self.scheduled_for
+      self.scheduled_for + 60
     end
   end
 

@@ -21,6 +21,6 @@
 //= require ./freshy_spa/components/datetime_input
 //= require bootstrap-datepicker
 //= require bootstrap-datepicker.pt-BR
-//= require clockpicker
+//= require jquery.timepicker
 //= require chosen-jquery
 //= require_tree .

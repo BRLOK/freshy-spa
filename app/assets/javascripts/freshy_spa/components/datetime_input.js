@@ -5,8 +5,9 @@ yojs.define("components.initializeDateTimeInputs", function(){
     todayHighlight: true
   });
 
-  $('.clockpicker').clockpicker({
-    default: "now",
-    autoclose: true
+  $('.timepicker').timepicker({
+    useSelect: true,
+    minTime: '8:00am',
+    maxTime: '10:00pm'
   });
 })
